@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_17_065538) do
+ActiveRecord::Schema.define(version: 2022_05_17_070249) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 2022_05_17_065538) do
     t.boolean "Addr_default"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "admin_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -77,6 +79,8 @@ ActiveRecord::Schema.define(version: 2022_05_17_065538) do
     t.datetime "Delivery_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "orderstatuses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -129,7 +133,9 @@ ActiveRecord::Schema.define(version: 2022_05_17_065538) do
     t.integer "Like_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "sub_reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -137,7 +143,9 @@ ActiveRecord::Schema.define(version: 2022_05_17_065538) do
     t.text "Content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["review_id"], name: "index_sub_reviews_on_review_id"
+    t.index ["user_id"], name: "index_sub_reviews_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -158,10 +166,14 @@ ActiveRecord::Schema.define(version: 2022_05_17_065538) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "orderitems", "orders"
   add_foreign_key "orderitems", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "orderstatuses", "orders"
   add_foreign_key "products", "categories"
   add_foreign_key "reviews", "products"
+  add_foreign_key "reviews", "users"
   add_foreign_key "sub_reviews", "reviews"
+  add_foreign_key "sub_reviews", "users"
 end
