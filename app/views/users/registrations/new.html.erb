@@ -1,29 +1,35 @@
-<h2>Dang ky</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container w-50">
+  <div class="d-flex justify-content-center">
+    <a href="<%= new_user_session_path %>">
+      <%= image_tag "logo", height: 150, width: 150 %>
+    </a>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="card p-3">
+    <h4>Đăng ký tài khoản cho Morisaki</h4>
+    <br>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "users/shared/error_messages", resource: resource %>
+    
+      <div class="form-group">
+        <%= f.text_field :fullName, autofocus: true, autocomplete: "fullName", placeholder: 'Tên của bạn', class: 'form-control' %>
+      </div>
+      <br>
+      <div class="form-group">
+        <%= f.email_field :email, autocomplete: "email", placeholder: 'Địa chỉ email của bạn', class: 'form-control' %>
+      </div>
+      <br>
+      <div class="form-group">
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: 'Mật khẩu', class: 'form-control' %>
+      </div>
+      <br>
+      <div class="form-group">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",
+         placeholder: 'Xác nhận mật khẩu của bạn', class: 'form-control' %>
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit "Đăng ký", class: 'btn btn-primary w-100' %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
