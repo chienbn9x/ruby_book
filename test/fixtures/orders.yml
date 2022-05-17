@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  Contact_receiver: MyString
+  Contact_phone: MyString
+  Contact_address: MyText
+  Sub_total: 1.5
+  Discount: 1.5
+  Total: 1.5
+  Status: 1
+  Note: MyText
+  Order_date: 2022-05-17 01:39:12
+  Delivery_date: 2022-05-17 01:39:12
+
+two:
+  user: two
+  Contact_receiver: MyString
+  Contact_phone: MyString
+  Contact_address: MyText
+  Sub_total: 1.5
+  Discount: 1.5
+  Total: 1.5
+  Status: 1
+  Note: MyText
+  Order_date: 2022-05-17 01:39:12
+  Delivery_date: 2022-05-17 01:39:12

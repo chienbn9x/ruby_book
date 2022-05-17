@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Title: MyString
+  Code: MyString
+  Discount_percent: 1.5
+  Discount_price: 1.5
+  Discount_type: 1
+  Min_order_value: 1.5
+  Max_order_value: 1.5
+  Start_date: 2022-05-17
+  End_date: 2022-05-17
+  Number_of_use: 1
+
+two:
+  Title: MyString
+  Code: MyString
+  Discount_percent: 1.5
+  Discount_price: 1.5
+  Discount_type: 1
+  Min_order_value: 1.5
+  Max_order_value: 1.5
+  Start_date: 2022-05-17
+  End_date: 2022-05-17
+  Number_of_use: 1

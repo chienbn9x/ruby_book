@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: one
+  Url: MyString
+  Title: MyText
+  Publication_year: MyString
+  Authors: MyText
+  Description: MyText
+  Main_image: MyString
+  Price: 1.5
+  Discount: 1.5
+  Final_price: 1.5
+  Amount: 1
+  Stop_business: false
+
+two:
+  category: two
+  Url: MyString
+  Title: MyText
+  Publication_year: MyString
+  Authors: MyText
+  Description: MyText
+  Main_image: MyString
+  Price: 1.5
+  Discount: 1.5
+  Final_price: 1.5
+  Amount: 1
+  Stop_business: false
