@@ -1,0 +1,64 @@
+#session_new, #session_new > div {
+    height: 100%;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.el-form-item__content {
+    position: relative;
+    font-size: 14px;
+}
+
+.el-form-item__content .el-input-group {
+    vertical-align: top;
+}
+
+.el-input-group {
+    line-height: normal;
+    display: inline-table;
+    width: 100%;
+    border-collapse: initial;
+    border-spacing: 0;
+}
+
+.el-input {
+    position: relative;
+}
+
+.el-input-group__prepend {
+    border-right: 0;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    background-color: #f5f7fa;
+    color: #909399;
+    vertical-align: middle;
+    display: table-cell;
+    position: relative;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    padding: 0 20px;
+    width: 1px;
+    white-space: nowrap;
+}
+
+.el-input-group--prepend .el-input__inner {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.el-input-group > .el-input__inner {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0 !important;
+}
+
+.remember {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
