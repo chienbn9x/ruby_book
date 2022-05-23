@@ -1,26 +1,54 @@
-<h2>Dang nhap</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div id="session_new" class="container w-100">
+  <div class="row d-flex align-items-center mx-3">
+    <div class="col-md-2 col-lg-3 col-xl-4"></div>
+    <div class="card p-3 col-md-8 col-lg-6 col-xl-4">
+      <div class="d-flex justify-content-center">
+        <%= image_tag "logo", height: 150, width: 150 %>
+      </div>
+      <h5 class="d-flex justify-content-center pb-3">Đăng nhập vào Morisaki</h5>
+      
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="el-form-item__content">
+          <div class="el-input el-input--medium el-input-group el-input-group--prepend">
+            <div class="el-input-group__prepend">
+              <i class="bi bi-person-fill"></i>
+            </div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: 'el-input__inner form-control' %>
+          </div>
+        </div>
+        <br>
+        <div class="el-form-item__content">
+          <div class="el-input el-input--medium el-input-group el-input-group--prepend">
+            <div class="el-input-group__prepend">
+              <i class="bi bi-lock-fill"></i>
+            </div>
+            <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Mật khẩu', class: 'el-input__inner form-control' %>
+          </div>
+        </div>
+        
+        <% if devise_mapping.rememberable? %>
+          <div class="form-group pt-3">
+            <div class="d-flex">
+              <%= f.check_box :remember_me, class: 'remember' %>
+              <%= f.label :remember_me, 'Nhớ mật khẩu' %>
+            </div>
+          </div>          
+        <% end %>
+        
+        <div class="actions pt-3">
+          <%= f.submit "Đăng nhập", class: 'btn btn-primary w-100' %>
+        </div>
+      <% end %>
+      
+      <div class="row pt-2">
+        <div class="col-sm">
+          <a href="<%= new_user_password_path %>">Quên mật khẩu?</a>
+        </div>
+        <div class="col-sm text-primary">
+          <a href="<%= new_user_registration_path %>" class="d-flex justify-content-end">Tạo tài khoản</a>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="col-md-2 col-lg-3 col-xl-4"></div>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
