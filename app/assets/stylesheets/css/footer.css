@@ -1,0 +1,50 @@
+/* css cho dichvu  */
+.dichvu p.detail {
+    font-size: 12px;
+    margin-bottom: 1px;
+    width: 198px;
+}
+
+.dichvu {
+    padding: 24px 0px 24px;
+}
+
+.dichvu h3.tieude {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.dichvu .noidung {
+    width: 180px;
+}
+
+.dichvu img {
+    width: 57px;
+    height: 57px;
+    margin-right: 10px;
+}
+/* het css cho dichvu  */
+
+/* css cho footer  */
+.ptthanhtoan {
+    width: 200px;
+}
+
+footer .row a {
+    text-decoration: none;
+    display: block;
+    color: black;
+    transition: 0.3s;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+
+footer .row a:hover {
+    color:  #F5A623;
+}
+
+footer .header {
+    font-size: 14px;
+    margin-bottom: 13px;
+}
+/* het css cho footer  */
