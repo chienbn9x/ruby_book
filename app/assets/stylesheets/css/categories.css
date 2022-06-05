@@ -1,0 +1,113 @@
+/* css category  */
+.categorycontent{
+    border: 1px solid #b4b2b2;
+    box-sizing: border-box;
+    height: 387px;
+    background: white;
+}
+
+.categorycontent ul{
+    list-style: none;
+    background: white;
+    padding-left: 0;
+    margin-right: 0;
+}
+
+.categorycontent > ul > li:hover{
+    background-color: #CF111A;
+    cursor: pointer;
+}
+
+.categorycontent > ul > li:hover > a{
+    color:white;
+}
+
+.categorycontent ul li:hover i.fa.fa-chevron-right{
+    color:white;
+}
+
+.categorycontent > ul > li{
+    border-bottom: 1px solid #f8e1e1;
+    height: 35px;
+}
+
+.categorycontent > ul > li:last-child{
+    border-bottom: none
+}
+
+.categorycontent  ul  li  a{
+    line-height: 35px;
+    padding-left: 16px;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.categorycontent ul li ul{
+    display: none;
+    height: 386px;
+    width: 750px;
+    border: 1px solid #d1d1d1;
+    position: absolute;
+    z-index: 99;
+    top: 0px;
+    left: 0px;
+    margin-left: 243px;
+    box-shadow: 0px 1px 3px #e7dddd;
+    background-color: white;
+}
+
+.categorycontent ul li ul:hover{
+    cursor: auto;
+}
+
+.categorycontent ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.categorycontent ul li:hover ul{
+    display:block;
+
+}
+
+ul i.fa.fa-chevron-right{
+    font-size: 10px;
+    color: #d1d1d1;
+    line-height: 35px;
+    padding-right: 20px;
+}
+/* het css category  */
+
+/* danhmucan */
+
+.categorycontent ul li ul li:first-child{
+    margin-top: 3px;
+}
+
+.categorycontent ul li ul li.liheader{
+    margin-top: 16px;
+}
+
+ul li a.header{
+    font-size: 15px;
+    padding-left: 33px;
+    color: #CF111A;
+}
+
+.categorycontent ul li ul .content{
+    float:left;
+    margin-left: 19px;
+    width: 300px;
+    height: 265px;
+}
+
+
+.categorycontent ul li ul .content.phai{
+    margin-left: 100px;
+}
+
+
+.categorycontent ul li ul .content li a:hover{
+    color: #F5A623;
+}
+/* danhmucan */
