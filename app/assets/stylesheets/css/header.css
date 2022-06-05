@@ -78,6 +78,7 @@
      font-size: 14px;
      color: white;
      padding: 9px;
+     width: 90%;
  }
  
  a.dropdown-item:hover {
@@ -105,56 +106,12 @@
      box-shadow: 0px 5px 20px grey;
  }
  /* het css cho navbar  */
- 
- /* .duoinavbar  */
- .duoinavbar{
-     background-color:#CF111A ;
- }
- 
- .benphai.float-right {
-     line-height: 40px;
-     font-size: 14px;
- }
- 
- .noidungheader {
-     padding-top: 8px;
-     padding-left: 14px;
- }
- 
- .categoryheader {
-     height: 40px;
-     background-color: #aa1318;
- }
- 
- .duoinavbar .container .row {
-     height: 40px;
- }
- 
- .duoinavbar {
-     height: 40px;
- }
 
- .duoinavbar a, .duoinavbar a:hover {
-     text-decoration: none;
-     color: white;
+ /* css cho carousel */
+ .carousel-control-prev, .carousel-control-next {
+    background: none !important;
  }
- 
- .hotline{
-     display: inline-block;
-     position: relative;
-     margin-right: 11px;
- }
- 
- .hotline:after{
-     content:"|";
-     position: absolute;
-     color:white;
-     top: -1px;
-     right: -10px;
-     font-size: 22px;
- }
-
- /* het css .duoinavbar  */
+ /* het css cho carousel */
 
  @media (max-width:767px){
     .navbar form .input-group{
@@ -176,8 +133,5 @@
         border-bottom: 1px dashed #CF111A;
         padding-bottom: 0.5rem;
         margin-right:8px;
-    }
-    .categorycontent{
-        display: none;
-    }
+    } 
 }

@@ -5,12 +5,17 @@
     <a class="navbar-brand" href="index.html" style="color: #CF111A;"><b>Morisaki</b></a>
 
     <!-- navbar-toggler  -->
-    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
       aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"><span
       class="navbar-toggler-icon"></span></button>
 
-      <div class="container-fluid" style="width: 40%;">
-        <form class="d-flex">
+      <div class="mx-auto d-flex" style="width: 40%;">
+        <!-- menu -->
+        <div class="me-4" id="menu-categories">
+          <span style="font-size: 27px;"><i class="bi bi-menu-up"></i></span>
+        </div>
+
+        <form class="d-flex" style="width: 100%;">
           <input class="form-control me-2" type="search" placeholder="Nhập sách cần tìm kiếm..." aria-label="Search">
           <button class="btn" type="submit" style="background: #cf111a; color: white;"><i class="bi bi-search"></i></button>
         </form>
@@ -23,12 +28,11 @@
             <a href="#" class="btn btn-secondary rounded-circle">
               <i class="bi bi-person-fill"></i>
             </a>
-            <a class="nav-link text-dark text-uppercase" href="#" style="display:inline-block">Tài
-              khoản</a>
+            <a class="nav-link text-dark text-uppercase" href="#" style="display:inline-block">Tài khoản</a>
           </li>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item nutdangky text-center mb-2" href="<%= new_user_registration_path %>">Đăng ký</a>
-            <a class="dropdown-item nutdangnhap text-center" href="<%= new_user_session_path %>">Đăng nhập</a>
+            <a class="dropdown-item nutdangky text-center mb-2 mx-auto" href="<%= new_user_registration_path %>">Đăng ký</a>
+            <a class="dropdown-item nutdangnhap text-center mx-auto" href="<%= new_user_session_path %>">Đăng nhập</a>
           </div>
         </div>
         <li class="nav-item giohang">
@@ -42,29 +46,3 @@
     </div>
   </div>
 </nav>
-
-<!-- thanh tieu de "danh muc sach" + hotline + ho tro truc tuyen -->
-<section class="duoinavbar">
-  <div class="container text-white">
-    <div class="row justify">
-      <div class="col-md-3">
-        <div class="categoryheader">
-          <div class="noidungheader text-white">
-            <i class="bi bi-list"></i>
-            <span class="text-uppercase font-weight-bold ms-1">Danh mục sách</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-9">
-        <div class="d-flex justify-content-end">
-          <div class="hotline">
-            <i class="bi bi-telephone-fill"></i>
-            <span>Hotline:<b>1900 1999</b> </span>
-          </div>
-          <i class="bi bi-chat-dots-fill"></i>
-          <a href="#">Hỗ trợ trực tuyến </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
