@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   # root
   root 'products#index'
 
+  # categories
+  resources :categories, only: [:show]
+
   # products
-  resources :products
+  resources :products, only: [:index, :show, ]
 end
