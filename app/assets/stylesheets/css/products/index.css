@@ -48,10 +48,6 @@ li.active .fa-star {
     border-radius: 6px;
     font-size: 11px;color: white;
     padding: 1px 4px;
-    position: absolute;
-    right: 0
-    ;
-    top: 2px;
 }
 
 .giacu.text-muted {
@@ -63,7 +59,6 @@ li.active .fa-star {
     color: red;
     font-size: 14px;
     font-weight: 500;
-    padding-right: 10px;
 }
 
 .gia.d-flex {

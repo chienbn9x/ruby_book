@@ -58,3 +58,7 @@ gem 'devise'
 
 #active admin
 gem 'activeadmin'
+
+# binding pry 
+gem 'pry-rails', :group => :development
+gem 'pry', '~> 0.13.1'
