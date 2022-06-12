@@ -12,4 +12,7 @@ Rails.application.routes.draw do
 
   # products
   resources :products, only: [:index, :show, ]
+
+  # carts
+  resources :carts, only: [:index]
 end
