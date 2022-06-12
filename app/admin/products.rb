@@ -6,7 +6,7 @@ ActiveAdmin.register Product do
       @product = Product.new(permitted_params[:product])
 
       if @product.save
-        render @product
+        redirect_to @product
       end
     end
   end
