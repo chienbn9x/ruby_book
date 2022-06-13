@@ -1,48 +1,41 @@
 <!-- header -->
-<nav class="navbar navbar-expand-md bg-white navbar-light">
-  <div class="container">
+<nav class="navbar navbar-expand-md bg-white navbar-light" style="padding: 0px;">
+  <div class="container" style="height: 76px;">
     <!-- logo  -->
     <a class="navbar-brand" href="index.html" style="color: #CF111A;"><b>Morisaki</b></a>
 
-    <!-- navbar-toggler  -->
-    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
-      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"><span
-      class="navbar-toggler-icon"></span></button>
-
-      <div class="mx-auto d-flex" style="width: 40%;">
-        <!-- menu -->
-        <div class="me-4" id="menu-categories">
-          <span style="font-size: 27px;"><i class="bi bi-menu-up"></i></span>
-        </div>
-
-        <form class="d-flex" style="width: 100%;">
-          <input class="form-control me-2" type="search" placeholder="Nhập sách cần tìm kiếm..." aria-label="Search">
-          <button class="btn" type="submit" style="background: #cf111a; color: white;"><i class="bi bi-search"></i></button>
-        </form>
-      </div>
-
-      <!-- ô đăng nhập đăng ký giỏ hàng trên header  -->
-      <ul class="navbar-nav mb-1 ms-auto">
-        <div class="dropdown">
-          <li class="nav-item account" type="button" class="btn dropdown" data-bs-toggle="dropdown" id="dropdownMenuButton">
-            <a href="#" class="btn btn-secondary rounded-circle">
-              <i class="bi bi-person-fill"></i>
-            </a>
-            <a class="nav-link text-dark text-uppercase" href="#" style="display:inline-block">Tài khoản</a>
-          </li>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item nutdangky text-center mb-2 mx-auto" href="<%= new_user_registration_path %>">Đăng ký</a>
-            <a class="dropdown-item nutdangnhap text-center mx-auto" href="<%= new_user_session_path %>">Đăng nhập</a>
-          </div>
-        </div>
-        <li class="nav-item giohang">
-          <a href="gio-hang.html" class="btn btn-secondary rounded-circle">
-            <i class="bi bi-cart-fill"></i>
-            <div class="cart-amount">0</div>
-          </a>
-          <a class="nav-link text-dark giohang text-uppercase" href="gio-hang.html" style="display:inline-block">Giỏ Hàng</a>
-        </li>
-      </ul>
+    <!-- menu -->
+    <div class="me-4 d-flex align-items-center justify-content-end dropdown categorycontent" id="menu-categories" style="width: 99px; height: 100%;">
+      <span class="float-end" id="dropdownMenuButton1" data-bs-toggle="dropdown" style="font-size: 27px;"><i class="bi bi-menu-up"></i></span>
+      <%= render 'layouts/categories' %>
     </div>
+    
+    <form class="d-flex" style="width: 50%;">
+      <input class="form-control me-2" type="search" placeholder="Nhập sách cần tìm kiếm..." aria-label="Search">
+      <button class="btn" type="submit" style="background: #cf111a; color: white;"><i class="bi bi-search"></i></button>
+    </form>
+
+    <!-- ô đăng nhập đăng ký giỏ hàng trên header  -->
+    <ul class="navbar-nav mb-1 ms-auto">
+      <div class="dropdown">
+        <li class="nav-item account" type="button" class="btn dropdown" data-bs-toggle="dropdown" id="dropdownMenuButton">
+          <a href="#" class="btn btn-secondary rounded-circle">
+            <i class="bi bi-person-fill"></i>
+          </a>
+          <a class="nav-link text-dark text-uppercase" href="#" style="display:inline-block">Tài khoản</a>
+        </li>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item nutdangky text-center mb-2 mx-auto" href="<%= new_user_registration_path %>">Đăng ký</a>
+          <a class="dropdown-item nutdangnhap text-center mx-auto" href="<%= new_user_session_path %>">Đăng nhập</a>
+        </div>
+      </div>
+      <li class="nav-item giohang">
+        <a href="gio-hang.html" class="btn btn-secondary rounded-circle">
+          <i class="bi bi-cart-fill"></i>
+          <div class="cart-amount">0</div>
+        </a>
+        <a class="nav-link text-dark giohang text-uppercase" href="gio-hang.html" style="display:inline-block">Giỏ Hàng</a>
+      </li>
+    </ul>
   </div>
 </nav>
