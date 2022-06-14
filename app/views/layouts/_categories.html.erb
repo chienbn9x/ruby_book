@@ -7,13 +7,13 @@
       <% subors = category.subordinates %>
       <div class="content trai">
         <% subors.limit(5).each do |subor| %>
-        <li><a href="<%= category_path(subor) %>"><%= subor.name %></a></li>
+        <li><%= link_to subor.name, category_path(subor) %></li>
         <% end %>
       </div>
       <div class="content phai">
         <% lim = subors.count < 10 ? (subors.count - 5) : 4  %>
         <% subors.limit(lim).offset(5).each do |subor| %>
-        <li><a href="<%= category_path(subor) %>"><%= subor.name %></a></li>
+        <li><%= link_to subor.name, category_path(subor) %></li>
         <% end %>
       </div>
     </ul>

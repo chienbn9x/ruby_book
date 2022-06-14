@@ -6,4 +6,5 @@ class Category < ApplicationRecord
     validates :name, presence: true, uniqueness: true
 
     scope :category_parents, -> { where(role: true) }
+    scope :category_childs, -> { where(role: false) }
 end
