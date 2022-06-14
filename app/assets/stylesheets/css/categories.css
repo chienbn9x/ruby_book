@@ -3,6 +3,7 @@
     background: white;
     padding-left: 0;
     margin-right: 0;
+    margin-bottom: 0;
 }
 
 .categorycontent > ul > li:hover{
@@ -36,7 +37,6 @@
 
 .categorycontent ul li ul{
     display: none;
-    height: 386px;
     width: 750px;
     border: 1px solid #d1d1d1;
     position: absolute;
@@ -58,7 +58,7 @@
 
 .categorycontent ul li:hover ul{
     display:block;
-
+    height: 100%;
 }
 
 ul i.fa.fa-chevron-right{
@@ -89,7 +89,6 @@ ul li a.header{
     float:left;
     margin-left: 19px;
     width: 300px;
-    height: 265px;
 }
 
 
