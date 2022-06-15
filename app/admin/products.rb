@@ -1,6 +1,20 @@
 ActiveAdmin.register Product do
-  permit_params :category_id, :title, :publication_year, :publication_company, :authors, :translator, :description, :price,
-                :discount, :height, :width, :weight, :layout, :number_page, :stop_business
+  permit_params :category_id, :title, :publication_year, :publication_company, :authors, :translator, :description, 
+                :price, :discount, :height, :width, :weight, :layout, :number_page, :stop_business, images: []
+
+  index do
+    column :category_id
+    column :title
+    column :publication_year
+    column :publication_company
+    column :authors
+    column :translator
+    column :price
+    column :discount
+    column :layout
+    column :number_page
+    actions
+  end
 
   form do |f|
     f.inputs do
@@ -10,7 +24,7 @@ ActiveAdmin.register Product do
       f.input :publication_company
       f.input :authors
       f.input :translator
-      f.input :description
+      f.rich_text_area :description
       f.input :images, as: :file, input_html: { multiple: true }
       f.input :price
       f.input :discount
