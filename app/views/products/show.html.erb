@@ -6,8 +6,8 @@
   <nav class="container" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-      <li class="breadcrumb-item"><a href="#">Sách kinh tế</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Sách kỹ năng làm việc</li>
+      <li class="breadcrumb-item"><%= link_to @product.category.category.name, nil %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @product.category.name %></li>
     </ol>
   </nav>
 </section>
@@ -20,17 +20,17 @@
       <div class="row">
         <!-- ảnh  -->
         <div class="col-md-5 khoianh">
-          <div class="anhto mb-4">
-            <a class="active" href="images/lap-ke-hoach-kinh-doanh-hieu-qua-mt.jpg" data-fancybox="thumb-img">
-              <%= image_tag 'lap-ke-hoach-kinh-doanh-hieu-qua-mt.jpg', class: 'product-image', alt: 'lap-ke-hoach-kinh-doanh-hieu-qua-mt', style: 'width: 100%;' %>
+          <div class="anhto mb-4" style="height: 431px;">
+            <a class="active" href="" data-fancybox="thumb-img">
+              <%= image_tag @product.images.first, class: 'product-image', alt: 'lap-ke-hoach-kinh-doanh-hieu-qua-mt', style: 'width: 100%;' %>
             </a>
-            <a href="images/lap-ke-hoach-kinh-doanh-hieu-qua-ms.jpg" data-fancybox="thumb-img"></a>
+            <a href="" data-fancybox="thumb-img"></a>
           </div>
           <div class="list-anhchitiet d-flex mb-4" style="margin-left: 2rem;">
-            <%= image_tag 'lap-ke-hoach-kinh-doanh-hieu-qua-mt.jpg', class: 'thumb-img thumb1 mr-3 img-fluid',
+            <% @product.images.each do |image| %>
+            <%= image_tag image, class: 'thumb-img thumb1 mr-3 img-fluid',
               alt: 'lap-ke-hoach-kinh-doanh-hieu-qua-mt' %>
-            <%= image_tag 'lap-ke-hoach-kinh-doanh-hieu-qua-ms.jpg', class: 'thumb-img thumb2 img-fluid',
-              alt: 'lap-ke-hoach-kinh-doanh-hieu-qua-ms' %>
+            <% end %>
           </div>
         </div>
         <script type="text/javascript">
@@ -46,7 +46,7 @@
         <div class="col-md-7 khoithongtin">
           <div class="row">
             <div class="col-md-12 header">
-              <h4 class="ten">Lập Kế Hoạch Kinh Doanh Hiệu Quả</h4>
+              <h4 class="ten"><%= @product.title %></h4>
               <div class="rate">
                 <i class="bi bi-star-fill active"></i>
                 <i class="bi bi-star-fill active"></i>
@@ -58,17 +58,17 @@
             </div>
             <div class="col-md-7">
               <div class="gia">
-                <div class="giabia">Giá bìa:<span class="giacu ml-2">139.000 ₫</span></div>
-                <div class="giaban">Giá bán tại DealBooks: <span class="giamoi font-weight-bold">111.200 </span><span
-                    class="donvitien">₫</span></div>
-                <div class="tietkiem">Tiết kiệm: <b>27.800 ₫</b> <span class="sale">-20%</span>
+                <div class="giabia">Giá bìa:<span class="giacu ml-2"><%= ActiveSupport::NumberHelper.number_to_delimited(@product.price.to_i, delimiter: '.') %> ₫</span></div>
+                <% discount_price = @product.price * @product.discount / 100 %>
+                <% final_price = @product.price - discount_price %>
+                <div class="giaban">Giá bán tại Morisaki: <span class="giamoi font-weight-bold"><%= ActiveSupport::NumberHelper.number_to_delimited(final_price.to_i, delimiter: '.') %> </span><span class="donvitien">₫</span></div>
+                <div class="tietkiem">Tiết kiệm: <b><%= ActiveSupport::NumberHelper.number_to_delimited(discount_price.to_i, delimiter: '.') %> ₫</b> <span class="sale">-<%= @product.discount.to_i %>%</span>
                 </div>
               </div>
               <div class="uudai my-3">
-                <h6 class="header font-weight-bold">Khuyến mãi & Ưu đãi tại DealBook:</h6>
+                <h6 class="header font-weight-bold">Khuyến mãi & Ưu đãi tại Morisaki:</h6>
                 <ul>
-                  <li><b>Miễn phí giao hàng </b>cho đơn hàng từ 150.000đ ở TP.HCM và 300.000đ ở
-                    Tỉnh/Thành khác <a href="#">>> Chi tiết</a></li>
+                  <li><b>Miễn phí giao hàng </b>cho đơn hàng từ 150.000đ ở TP.HN và 300.000đ ở Tỉnh/Thành khác <a href="#">>> Chi tiết</a></li>
                   <li><b>Combo sách HOT - GIẢM 25% </b><a href="#">>>Xem ngay</a></li>
                   <li>Tặng Bookmark cho mỗi đơn hàng</li>
                   <li>Bao sách miễn phí (theo yêu cầu)</li>
@@ -105,9 +105,7 @@
                 </script>
               </div>
               <div class="nutmua btn w-100 text-uppercase">Chọn mua</div>
-              <a class="huongdanmuahang text-decoration-none" href="#">(Vui lòng xem hướng dẫn mua
-                hàng)</a>
-              <small class="share">Share: </small>
+              <a class="huongdanmuahang text-decoration-none" href="#">(Vui lòng xem hướng dẫn mua hàng)</a>
               <div class="fb-like" data-href="https://www.facebook.com/DealBook-110745443947730/" data-width="300px"
                 data-layout="button" data-action="like" data-size="small" data-share="true"></div>
             </div>
@@ -115,14 +113,16 @@
             <div class="col-md-5">
               <div class="thongtinsach">
                 <ul>
-                  <li>Tác giả: <a href="#" class="tacgia">Brian Finch</a></li>
-                  <li>Ngày xuất bản: <b>04-2020</b></li>
-                  <li>Kích thước: <b>20.5 x 13.5 cm</b></li>
-                  <li>Dịch giả: Skye Phan;</li>
-                  <li>Nhà xuất bản: Nhà Xuất Bản Thanh Niên</li>
-                  <li>Hình thức bìa: <b>Bìa mềm</b></li>
-                  <li>Số trang: <b>336</b></li>
-                  <li>Cân nặng: <b>0</b></li>
+                  <li>Tác giả: <a href="#" class="tacgia"><%= @product.authors %></a></li>
+                  <li>Năm xuất bản: <b><%= @product.publication_year %></b></li>
+                  <li>Kích thước: <b><%= @product.height %> x <%= @product.width %> cm</b></li>
+                  <% unless @product.translator.nil? %>
+                  <li>Dịch giả: <%= @product.translator %></li>
+                  <% end %>
+                  <li>Nhà xuất bản: <%= @product.publication_company %></li>
+                  <li>Hình thức bìa: <b><%= @product.layout %></b></li>
+                  <li>Số trang: <b><%= @product.number_page %></b></li>
+                  <li>Cân nặng: <b><%= @product.weight %></b></li>
                 </ul>
               </div>
             </div>
@@ -134,80 +134,17 @@
           <!-- 2 tab ở trên  -->
           <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active text-uppercase" style="margin-left: 0;" id="nav-gioithieu-tab" data-bs-toggle="tab"
+              <a class="nav-item nav-link active text-uppercase" style="margin-left: 0; width: auto;" id="nav-gioithieu-tab" data-bs-toggle="tab"
                 href="#nav-gioithieu" role="tab" aria-controls="nav-gioithieu" aria-selected="true">Giới thiệu</a>
-              <a class="nav-item nav-link text-uppercase" id="nav-danhgia-tab" data-bs-toggle="tab" href="#nav-danhgia"
-                role="tab" aria-controls="nav-danhgia" aria-selected="false">Đánh
-                giá của độc giả</a>
+              <a class="nav-item nav-link text-uppercase" style="width: auto;" id="nav-danhgia-tab" data-bs-toggle="tab" href="#nav-danhgia"
+                role="tab" aria-controls="nav-danhgia" aria-selected="false">Đánh giá của độc giả</a>
             </div>
           </nav>
           <!-- nội dung của từng tab  -->
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active ml-3" id="nav-gioithieu" role="tabpanel"
-              aria-labelledby="nav-gioithieu-tab">
-              <h6 class="tieude font-weight-bold">Lập Kế Hoạch Kinh Doanh Hiệu Quả</h6>
-              <p>
-                <span>Khi bắt đầu thành lập doanh nghiệp hay mở rộng quy mô hoạt động, lập ra một
-                  bản kế hoạch kinh doanh là bước đi đầu tiên không thể thiếu. Bản kế hoạch kinh
-                  doanh càng được chuẩn bị kỹ lưỡng và lôi cuốn bao nhiêu, cơ hội ghi điểm trước
-                  các nhà đầu tư càng lớn bấy nhiêu. Phải chăng, thông qua bản kế hoạch kinh
-                  doanh, bạn muốn người đọc:
-                </span>
-              </p>
-              <p>
-                <span>- Đầu tư vào một ý tưởng kinh doanh mới hay một doanh nghiệp đang hoạt
-                  động?</span>
-              </p>
-              <p>
-                <span>- Mua lại doanh nghiệp của bạn?</span>
-              </p>
-              <p>
-                <span>- Tham gia liên doanh với bạn?</span>
-              </p>
-              <p>
-                <span>- Chấp nhận đề nghị của bạn để thực hiện hợp đồng?</span>
-              </p>
-              <p>
-                <span>- Cấp cho bạn một khoản hỗ trợ hoặc phê duyệt theo quy định?</span>
-              </p>
-              <p>
-                <span>- Thuyết phục hội đồng quản trị thay đổi phương hướng hoạt động doanh nghiệp
-                  của bạn?</span>
-              </p>
-              <p>
-                <span>Cuốn sách “Lập kế hoạch kinh doanh hiệu quả” sẽ hướng dẫn bạn cách để tạo ra
-                  bản kế hoạch kinh doanh thu hút mọi tổ chức tài chính, khiến họ phải đáp ứng
-                  mong muốn của bạn và hỗ trợ bạn tới cùng trong công việc kinh doanh. Thông qua
-                  cuốn sách, bạn sẽ biết cách:</span>
-              </p>
-              <p>
-                <span>Tạo ra bản kế hoạch kinh doanh hoàn chỉnh Xây dựng chiến lược hoạt động cho
-                  doanh nghiệp.</span>
-              </p>
-              <p>
-                <span>Đưa ra dự báo kinh doanh sát với thực tế.</span>
-              </p>
-              <p>
-                <span>Nắm rõ các thông tin tài chính ảnh hưởng lớn tới doanh nghiệp.</span>
-              </p>
-              <p>
-                <span>Trong quá trình xây dựng kế hoạch, việc tham khảo ý kiến chuyên gia là điều
-                  cần thiết nhưng bạn phải là người đóng góp chính và hiểu tường tận mỗi chi tiết
-                  có trong đó. Hãy xem việc lập kế hoạch giống như việc truyền đạt câu chuyện của
-                  mình nhằm thuyết phục người đọc đồng hành cùng bạn trên con đường chinh phục mục
-                  tiêu kinh doanh.</span>
-              </p>
-              <p>
-                <span>Bạn chỉ có một cơ hội duy nhất để tạo ấn tượng đầu tiên tốt đẹp. Đừng để nó
-                  vụt mất. Hãy trình bày một văn bản có tính thuyết phục cao, bố cục đẹp mắt,
-                  không mắc lỗi chính tả, ngữ pháp, bao gồm các vấn đề trọng tâm và cuối cùng là
-                  chứa các thông tin bổ trợ cần thiết.</span>
-              </p>
-              <p>
-                <span>Bằng kiến thức, kinh nghiệm của mình, Brian Finch - một chuyên gia trong lĩnh
-                  vực tư vấn lập kế hoạch kinh doanh và quản lý tài chính - chắc chắn sẽ giúp bạn
-                  xây dựng thành công kế hoạch kinh doanh của riêng mình.</span>
-              </p>
+          <div class="tab-content" id="nav-tabContent" style="border: none;">
+            <div class="tab-pane fade show active ml-3" id="nav-gioithieu" role="tabpanel" aria-labelledby="nav-gioithieu-tab">
+              <h6 class="tieude font-weight-bold"><%= @product.title %></h6>
+              <%= @product.description %>
             </div>
             <div class="tab-pane fade" id="nav-danhgia" role="tabpanel" aria-labelledby="nav-danhgia-tab">
               <div class="row">
