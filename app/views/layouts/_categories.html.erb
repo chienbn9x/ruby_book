@@ -5,14 +5,15 @@
     <ul>
       <li class="liheader"><a href="" class="header text-uppercase"><%= category.name %></a></li>
       <% subors = category.subordinates %>
+      <% tmp = subors.count %>
+      <% lim = (tmp.to_f/2 > tmp/2) ? (tmp/2 + 1) : tmp/2  %>
       <div class="content trai">
-        <% subors.limit(5).each do |subor| %>
+        <% subors.limit(lim).each do |subor| %>
         <li><%= link_to subor.name, category_path(subor) %></li>
         <% end %>
       </div>
       <div class="content phai">
-        <% lim = subors.count < 10 ? (subors.count - 5) : 4  %>
-        <% subors.limit(lim).offset(5).each do |subor| %>
+        <% subors.limit(tmp - lim).offset(lim).each do |subor| %>
         <li><%= link_to subor.name, category_path(subor) %></li>
         <% end %>
       </div>
