@@ -56,6 +56,15 @@ label.label-select {
     background: white;
 }
 
+.the-loai-sach ul .li-tmp {
+    border: none;
+}
+
+.the-loai-sach ul .li-tmp:hover {
+    border: none;
+    box-shadow: none;
+}
+
 .the-loai-sach ul li:last-child {
     margin-right: 0px;
 }
