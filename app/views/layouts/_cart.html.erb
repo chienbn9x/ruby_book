@@ -1,0 +1,7 @@
+<li class="nav-item giohang">
+  <a href="<%= carts_path %>" class="btn btn-secondary rounded-circle">
+    <i class="bi bi-cart-fill"></i>
+    <div class="cart-amount"><%= current_order.orderitems.count %></div>
+  </a>
+  <%= link_to 'Giỏ Hàng', carts_path, class: 'nav-link text-dark giohang text-uppercase', style: 'display: inline-block;' %>
+</li>

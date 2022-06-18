@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
 
   # products
-  resources :products, only: [:index, :show, ]
+  resources :products, only: [:index, :show]
 
   # carts
   resources :carts, only: [:index]
+
+  # order 
+  resources :orders, only: [:create, :destroy]
 end

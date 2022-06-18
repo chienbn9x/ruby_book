@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_14_153657) do
+ActiveRecord::Schema.define(version: 2022_06_18_155846) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -99,8 +99,7 @@ ActiveRecord::Schema.define(version: 2022_06_14_153657) do
   create_table "orderitems", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
-    t.integer "Quantity"
-    t.boolean "Reviewed"
+    t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_orderitems_on_order_id"
@@ -120,17 +119,16 @@ ActiveRecord::Schema.define(version: 2022_06_14_153657) do
     t.datetime "Delivery_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
+    t.bigint "orderstatus_id", null: false
+    t.bigint "user_id"
+    t.index ["orderstatus_id"], name: "index_orders_on_orderstatus_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "orderstatuses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "order_id", null: false
-    t.integer "Status"
-    t.datetime "Update_time"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_orderstatuses_on_order_id"
   end
 
   create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -215,8 +213,8 @@ ActiveRecord::Schema.define(version: 2022_06_14_153657) do
   add_foreign_key "categories", "categories"
   add_foreign_key "orderitems", "orders"
   add_foreign_key "orderitems", "products"
+  add_foreign_key "orders", "orderstatuses"
   add_foreign_key "orders", "users"
-  add_foreign_key "orderstatuses", "orders"
   add_foreign_key "products", "categories"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"

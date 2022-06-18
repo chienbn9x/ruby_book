@@ -1,6 +1,6 @@
 class Orderstatus < ApplicationRecord
 
-  validates :Status, :Update_time, presence: true
+  validates :status, presence: true
 
-  belongs_to :order
+  has_many :orders
 end
