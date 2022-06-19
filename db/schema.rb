@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_18_155846) do
+ActiveRecord::Schema.define(version: 2022_06_19_162852) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -107,16 +107,15 @@ ActiveRecord::Schema.define(version: 2022_06_18_155846) do
   end
 
   create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "Contact_receiver"
-    t.string "Contact_phone"
-    t.text "Contact_address"
-    t.float "Sub_total"
-    t.float "Discount"
-    t.float "Total"
-    t.integer "Status"
-    t.text "Note"
-    t.datetime "Order_date"
-    t.datetime "Delivery_date"
+    t.string "contact_receiver"
+    t.string "contact_phone"
+    t.text "contact_address"
+    t.float "sub_total"
+    t.float "discount"
+    t.integer "status"
+    t.text "note"
+    t.datetime "order_date"
+    t.datetime "delivery_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "orderstatus_id", null: false

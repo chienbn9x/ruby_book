@@ -6,147 +6,71 @@
   <div class="container">
     <div class="cart-page bg-white">
       <div class="row">
+        <% if @order_items.count == 0 %>
         <!-- giao diện giỏ hàng khi không có item  -->
-        <div class="col-12 cart-empty d-none">
+        <div class="col-12 cart-empty">
           <div class="py-3 ps-3">
             <h6 class="header-gio-hang">GIỎ HÀNG CỦA BẠN <span>(0 sản phẩm)</span></h6>
             <div class="cart-empty-content w-100 text-center justify-content-center">
               <%= image_tag 'shopping-cart-not-product.png', alt: 'shopping-cart-not-product' %>
               <p>Chưa có sản phẩm nào trong giở hàng của bạn</p>
-              <a href="index.html" class="btn nutmuathem mb-3">Mua thêm</a>
+              <a href="<%= root_path %>" class="btn nutmuathem mb-3">Mua thêm</a>
             </div>
           </div>
         </div>
-
+        <% else %>
         <!-- giao diện giỏ hàng khi có hàng (phần comment màu xanh bên dưới là phần 2 sản phẩm trong giỏ hàng nhưng giờ đã demo bằng jquery) -->
         <div class="col-md-8 cart">
           <div class="cart-content py-3 ps-3">
-            <h6 class="header-gio-hang">GIỎ HÀNG CỦA BẠN <span>(1 sản phẩm)</span></h6>
+            <h6 class="header-gio-hang">GIỎ HÀNG CỦA BẠN <span>(<%= @order_items.count %> sản phẩm)</span></h6>
+            <% @products.each do |product| %>
+            <% order_item = @order_items.find_by(product_id: product.id) %>
             <div class="cart-list-items">
               <div class="cart-item d-flex">
-                <a href="product-item.html" class="img">
-                  <%= image_tag 'lap-ke-hoach-kinh-doanh-hieu-qua-mt.jpg', class: 'img-fluid', alt: 'lap-ke-hoach-kinh-doanh-hieu-qua-mt' %>
+                <a href="<%= product_path(product) %>" class="img">
+                  <%= image_tag product.images.first, class: 'img-fluid', alt: product.title.split.join('-') %>
                 </a>
                 <div class="item-caption d-flex w-100">
                   <div class="item-info ms-3">
-                    <a href="product-item.html" class="ten">Lập kế hoạch kinh doanh hiệu quả</a>
+                    <a href="<%= product_path(product) %>" class="ten"><%= product.title %></a>
                     <div class="soluong d-flex">
                       <div class="input-number input-group mb-3">
                         <div class="input-group-prepend">
-                          <span class="input-group-text btn-spin btn-dec">-</span>
+                          <%= form_with url: order_dec_path(@order), data: { remote: true } do |f| %>
+                            <%= f.hidden_field :product_id, value: product.id %>
+                            <%= f.submit '-', class: 'input-group-text btn-spin btn-dec' %>
+                          <% end %>
                         </div>
-                        <input type="text" value="1" class="soluongsp  text-center">
+                        <input type="text" value="<%= order_item.quantity %>" id="sp-<%= product.id %>" class="soluongsp text-center">
                         <div class="input-group-append">
-                          <span class="input-group-text btn-spin btn-inc">+</span>
+                          <%= form_with url: order_inc_path(@order), data: {remote: true} do |f| %>
+                            <%= f.hidden_field :product_id, value: product.id %>
+                            <%= f.submit '+', class: 'input-group-text btn-spin btn-inc' %>
+                          <% end %>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="item-price ms-auto d-flex flex-column align-items-end">
-                    <div class="giamoi" style="color: #212529; font-size: 14px; font-weight: 400;";">111.200 ₫</div>
-                    <div class="giacu">139.000 ₫</div>
+                    <% final_price = product.price * (100 - product.discount) / 100 %>
+                    <div class="giamoi" style="color: #212529; font-size: 14px; font-weight: 400;";"><%= ActiveSupport::NumberHelper.number_to_delimited(final_price.to_i, delimiter: '.') %> ₫</div>
+                    <div class="giacu"><%= ActiveSupport::NumberHelper.number_to_delimited(product.price.to_i, delimiter: '.') %> ₫</div>
                     <span class="remove mt-auto"><i class="bi bi-trash"></i></span>
                   </div>
                 </div>
               </div>
               <hr>
             </div>
-            <div class="cart-list-items">
-              <div class="cart-item d-flex">
-                <a href="product-item.html" class="img">
-                  <%= image_tag 'lap-ke-hoach-kinh-doanh-hieu-qua-mt.jpg', class: 'img-fluid', alt: 'lap-ke-hoach-kinh-doanh-hieu-qua-mt' %>
-                </a>
-                <div class="item-caption d-flex w-100">
-                  <div class="item-info ms-3">
-                    <a href="product-item.html" class="ten">Lập kế hoạch kinh doanh hiệu quả</a>
-                    <div class="soluong d-flex">
-                      <div class="input-number input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text btn-spin btn-dec">-</span>
-                        </div>
-                        <input type="text" value="1" class="soluongsp  text-center">
-                        <div class="input-group-append">
-                          <span class="input-group-text btn-spin btn-inc">+</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item-price ms-auto d-flex flex-column align-items-end">
-                    <div class="giamoi" style="color: #212529; font-size: 14px; font-weight: 400;";">111.200 ₫</div>
-                    <div class="giacu">139.000 ₫</div>
-                    <span class="remove mt-auto"><i class="bi bi-trash"></i></span>
-                  </div>
-                </div>
-              </div>
-              <hr>
-            </div>
-            <div class="cart-list-items">
-              <div class="cart-item d-flex">
-                <a href="product-item.html" class="img">
-                  <%= image_tag 'lap-ke-hoach-kinh-doanh-hieu-qua-mt.jpg', class: 'img-fluid', alt: 'lap-ke-hoach-kinh-doanh-hieu-qua-mt' %>
-                </a>
-                <div class="item-caption d-flex w-100">
-                  <div class="item-info ms-3">
-                    <a href="product-item.html" class="ten">Lập kế hoạch kinh doanh hiệu quả</a>
-                    <div class="soluong d-flex">
-                      <div class="input-number input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text btn-spin btn-dec">-</span>
-                        </div>
-                        <input type="text" value="1" class="soluongsp  text-center">
-                        <div class="input-group-append">
-                          <span class="input-group-text btn-spin btn-inc">+</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item-price ms-auto d-flex flex-column align-items-end">
-                    <div class="giamoi" style="color: #212529; font-size: 14px; font-weight: 400;";">111.200 ₫</div>
-                    <div class="giacu">139.000 ₫</div>
-                    <span class="remove mt-auto"><i class="bi bi-trash"></i></span>
-                  </div>
-                </div>
-              </div>
-              <hr>
-            </div>
-            <div class="cart-list-items">
-              <div class="cart-item d-flex">
-                <a href="product-item.html" class="img">
-                  <%= image_tag 'lap-ke-hoach-kinh-doanh-hieu-qua-mt.jpg', class: 'img-fluid', alt: 'lap-ke-hoach-kinh-doanh-hieu-qua-mt' %>
-                </a>
-                <div class="item-caption d-flex w-100">
-                  <div class="item-info ms-3">
-                    <a href="product-item.html" class="ten">Lập kế hoạch kinh doanh hiệu quả</a>
-                    <div class="soluong d-flex">
-                      <div class="input-number input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text btn-spin btn-dec">-</span>
-                        </div>
-                        <input type="text" value="1" class="soluongsp  text-center">
-                        <div class="input-group-append">
-                          <span class="input-group-text btn-spin btn-inc">+</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item-price ms-auto d-flex flex-column align-items-end">
-                    <div class="giamoi" style="color: #212529; font-size: 14px; font-weight: 400;";">111.200 ₫</div>
-                    <div class="giacu">139.000 ₫</div>
-                    <span class="remove mt-auto"><i class="bi bi-trash"></i></span>
-                  </div>
-                </div>
-              </div>
-              <hr>
-            </div>
+            <% end %>
             <div class="row">
               <div class="col-md-3">
-                <a href="index.html" class="btn nutmuathem mb-3">Mua thêm</a>
+                <a href="<%= root_path %>" class="btn nutmuathem mb-3">Mua thêm</a>
               </div>
               <div class="col-md-5 offset-md-4">
                 <div class="tonggiatien">
                   <div class="group d-flex justify-content-between">
                     <p class="label">Tạm tính:</p>
-                    <p class="tamtinh">328.000 ₫</p>
+                    <p class="tamtinh"><%= ActiveSupport::NumberHelper.number_to_delimited(@order.sub_total.to_i, delimiter: '.') %> ₫</p>
                   </div>
                   <div class="group d-flex justify-content-between">
                     <p class="label">Giảm giá:</p>
@@ -162,7 +86,7 @@
                   </div>
                   <div class="group d-flex justify-content-between align-items-center">
                     <strong class="text-uppercase">Tổng cộng:</strong>
-                    <p class="tongcong">328.000 ₫</p>
+                    <p class="tongcong"><%= ActiveSupport::NumberHelper.number_to_delimited(@order.sub_total.to_i, delimiter: '.') %> ₫</p>
                   </div>
                   <small class="note d-flex justify-content-end text-muted">
                       (Giá đã bao gồm VAT)
@@ -408,6 +332,7 @@
             }); 
           </script>
         </div>
+        <% end %>
         <!-- het div cart-steps  -->
       </div>
       <!-- het row  -->

@@ -1,0 +1,4 @@
+$('.cart-amount').html(<%= @order.cart_size %>);
+$('#sp-<%= params[:product_id] %>').attr('value', <%= @order_item.quantity %>)
+$('.tamtinh').html('<%= ActiveSupport::NumberHelper.number_to_delimited(@order.sub_total.to_i, delimiter: '.') %> ₫')
+$('.tongcong').html('<%= ActiveSupport::NumberHelper.number_to_delimited(@order.sub_total.to_i, delimiter: '.') %> ₫')
