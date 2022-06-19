@@ -74,40 +74,42 @@
                   <li>Bao sách miễn phí (theo yêu cầu)</li>
                 </ul>
               </div>
-              <div class="soluong d-flex">
-                <label class="font-weight-bold">Số lượng: </label>
-                <div class="input-number input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text btn-spin btn-dec">-</span>
+              <%= form_for @order, remote: true do |f| %>
+                <div class="soluong d-flex">
+                  <label class="font-weight-bold">Số lượng: </label>
+                  <div class="input-number input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text btn-spin btn-dec">-</span>
+                    </div>
+                    <!-- <input type="text" value="1" name="quantity" class="soluongsp text-center"> -->
+                    <%= f.text_field :quantity, :value => "1", class: 'soluongsp text-center' %>
+                    <div class="input-group-append">
+                      <span class="input-group-text btn-spin btn-inc">+</span>
+                    </div>
                   </div>
-                  <input type="text" value="1" class="soluongsp  text-center">
-                  <div class="input-group-append">
-                    <span class="input-group-text btn-spin btn-inc">+</span>
-                  </div>
-                </div>
-                <script type="text/javascript">
-                  // btn spin 
-                  $('.btn-inc').on('click', function() {
-                    var strval = $(this).parent().prev().val();
-                    var val = parseInt(strval) + 1;
-                    $(this).parent().prev().attr('value', val);
-                  });
+                  <script type="text/javascript">
+                    // btn spin 
+                    $('.btn-inc').on('click', function() {
+                      var strval = $(this).parent().prev().val();
+                      var val = parseInt(strval) + 1;
+                      $(this).parent().prev().attr('value', val);
+                    });
 
-                  $('.btn-dec').on('click', function() {
-                    var strval = $(this).parent().next().val();
-                    var val = parseInt(strval) - 1;
-                    if (val < 1) {
-                      $(this).parent().next().attr('value', 1);
-                    } else {
-                      $(this).parent().next().attr('value', val);
-                    }
-                  });
-                </script>
-              </div>
-              <div class="nutmua btn w-100 text-uppercase">Chọn mua</div>
+                    $('.btn-dec').on('click', function() {
+                      var strval = $(this).parent().next().val();
+                      var val = parseInt(strval) - 1;
+                      if (val < 1) {
+                        $(this).parent().next().attr('value', 1);
+                      } else {
+                        $(this).parent().next().attr('value', val);
+                      }
+                    });
+                  </script>
+                </div>
+                <%= f.hidden_field :product_id, :value => @product.id %>
+                <%= f.submit 'Chọn mua', class: 'nutmua btn w-100 text-uppercase' %>
+              <% end %>
               <a class="huongdanmuahang text-decoration-none" href="#">(Vui lòng xem hướng dẫn mua hàng)</a>
-              <div class="fb-like" data-href="https://www.facebook.com/DealBook-110745443947730/" data-width="300px"
-                data-layout="button" data-action="like" data-size="small" data-share="true"></div>
             </div>
             <!-- thông tin khác của sản phẩm:  tác giả, ngày xuất bản, kích thước ....  -->
             <div class="col-md-5">

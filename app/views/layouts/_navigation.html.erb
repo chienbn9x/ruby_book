@@ -29,13 +29,7 @@
           <a class="dropdown-item nutdangnhap text-center mx-auto" href="<%= new_user_session_path %>">Đăng nhập</a>
         </div>
       </div>
-      <li class="nav-item giohang">
-        <a href="<%= carts_path %>" class="btn btn-secondary rounded-circle">
-          <i class="bi bi-cart-fill"></i>
-          <div class="cart-amount">0</div>
-        </a>
-        <a class="nav-link text-dark giohang text-uppercase" href="<%= carts_path %>" style="display:inline-block">Giỏ Hàng</a>
-      </li>
+      <div class="cart-text"><%= render 'layouts/cart' %></div>
     </ul>
   </div>
 </nav>

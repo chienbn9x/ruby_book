@@ -68,7 +68,7 @@
           <% @category.products.each do |product| %>
           <div class="col-lg-3 col-md-4 col-xs-6 item">
             <div class="card ">
-              <a href="#" class="motsanpham" style="text-decoration: none; color: black;"
+              <a href="<%= product_path(product) %>" class="motsanpham" style="text-decoration: none; color: black;"
                 data-toggle="tooltip" data-placement="bottom" title="Lập Kế Hoạch Kinh Doanh Hiệu Quả">
                 <%= image_tag product.images.first, class: 'card-img-top anh',
                   alt: product.title.split.join('-') %>
