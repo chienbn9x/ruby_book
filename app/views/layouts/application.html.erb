@@ -14,8 +14,12 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %>
-    <%= yield %>
-    <%= render "layouts/footer" %>
+    <% if current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
+      <%= yield %>
+    <% else %>
+      <%= render "layouts/header" %>
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    <% end %>
   </body>
 </html>
