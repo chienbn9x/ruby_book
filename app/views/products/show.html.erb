@@ -61,12 +61,12 @@
                 <div class="giabia">Giá bìa:<span class="giacu ml-2"><%= ActiveSupport::NumberHelper.number_to_delimited(@product.price.to_i, delimiter: '.') %> ₫</span></div>
                 <% discount_price = @product.price * @product.discount / 100 %>
                 <% final_price = @product.price - discount_price %>
-                <div class="giaban">Giá bán tại Morisaki: <span class="giamoi font-weight-bold"><%= ActiveSupport::NumberHelper.number_to_delimited(final_price.to_i, delimiter: '.') %> </span><span class="donvitien">₫</span></div>
+                <div class="giaban">Giá bán tại Ruby: <span class="giamoi font-weight-bold"><%= ActiveSupport::NumberHelper.number_to_delimited(final_price.to_i, delimiter: '.') %> </span><span class="donvitien">₫</span></div>
                 <div class="tietkiem">Tiết kiệm: <b><%= ActiveSupport::NumberHelper.number_to_delimited(discount_price.to_i, delimiter: '.') %> ₫</b> <span class="sale">-<%= @product.discount.to_i %>%</span>
                 </div>
               </div>
               <div class="uudai my-3">
-                <h6 class="header font-weight-bold">Khuyến mãi & Ưu đãi tại Morisaki:</h6>
+                <h6 class="header font-weight-bold">Khuyến mãi & Ưu đãi tại Ruby:</h6>
                 <ul>
                   <li><b>Miễn phí giao hàng </b>cho đơn hàng từ 150.000đ ở TP.HN và 300.000đ ở Tỉnh/Thành khác <a href="#">>> Chi tiết</a></li>
                   <li><b>Combo sách HOT - GIẢM 25% </b><a href="#">>>Xem ngay</a></li>
