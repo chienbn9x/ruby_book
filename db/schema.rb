@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_19_162852) do
+ActiveRecord::Schema.define(version: 2022_07_10_101525) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -202,6 +202,7 @@ ActiveRecord::Schema.define(version: 2022_06_19_162852) do
     t.string "Phone"
     t.string "Wishlist"
     t.boolean "Blocked", default: false
+    t.integer "display_language_type", default: 1, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

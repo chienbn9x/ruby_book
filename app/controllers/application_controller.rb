@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  # cart
   before_action :check_session
   helper_method :current_order
+  # i18n
+  before_action :set_locale
 
   def current_order
     if !session[:order_id].nil?
@@ -22,5 +25,11 @@ class ApplicationController < ActionController::Base
         session.delete(:order_id)
       end
     end
+
+  private
+  def set_locale
+    I18n.locale = I18n.default_locale
+    I18n.locale = current_user.locale if user_signed_in?
+  end
 
 end

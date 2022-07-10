@@ -62,3 +62,6 @@ gem 'activeadmin'
 # binding pry 
 gem 'pry-rails', :group => :development
 gem 'pry', '~> 0.13.1'
+
+# i18n
+gem 'rails-i18n'

@@ -11,4 +11,15 @@ class User < ApplicationRecord
   has_many :addresses, dependent: :delete_all
   has_many :reviews, dependent: :delete_all
   has_many :sub_reviews, dependent: :delete_all
+
+  def locale
+    case display_language_type
+    when DISPLAY_LANGUAGE_TYPE_VI
+      :vi
+    when DISPLAY_LANGUAGE_TYPE_EN
+      :en
+    else
+      :vi
+    end
+  end
 end
