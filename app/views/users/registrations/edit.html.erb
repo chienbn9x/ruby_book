@@ -6,12 +6,29 @@
       <%= render "users/shared/error_messages", resource: resource %>
     
       <div class="form-group">
-        <%= f.email_field :email, autocomplete: "email", placeholder: 'Địa chỉ email của bạn', class: 'form-control', disabled: true %>
+        <%= f.email_field :email, autocomplete: "email", placeholder: 'Địa chỉ email của bạn', class: 'form-control', style: 'width: 100%;', disabled: true %>
       </div>
       <br>
       <div class="form-group">
-        <%= f.text_field :fullName, autofocus: true, autocomplete: "fullName", placeholder: 'Tên của bạn', class: 'form-control' %>
+        <%= f.text_field :fullName, autofocus: true, autocomplete: "fullName", placeholder: 'Tên của bạn', class: 'form-control', style: 'width: 100%;' %>
       </div>
+      <br>
+      <div class="form-group">
+        <%= f.date_field :birthday, class: 'form-control', style: 'width: 100%;' %>
+      </div>
+      <br>
+      <div class="form-group">
+        <%= f.radio_button :gender, '0', checked: !current_user.gender %>
+        <%= f.label :gender, 'Nam', {class: 'form-label', style: 'margin-right: 50px;'} %>
+        <%= f.radio_button :gender, '1', checked: current_user.gender %>
+        <%= f.label :gender, 'Nữ', {class: 'form-label'} %>
+      </div>
+      <br>
+      <div class="form-group">
+        <%= f.telephone_field :phone, value: current_user.phone, placeholder: 'Số điện thoại', class: 'form-control', style: 'width: 100%;' %>
+      </div>
+      <br>
+      <%= f.select :display_language_type, [["Tiếng Việt", 1], ["Tiếng Anh", 2]], { selected: current_user.display_language_type }, { class: 'form-select' } %>
       <br>
       <div class="actions">
         <%= f.submit "Lưu thay đổi", class: 'btn btn-primary w-100' %>

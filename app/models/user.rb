@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :email, :password, :fullName, presence: true
+  validates :email, :fullName, presence: true
   validates :email, uniqueness: true
 
   has_many :orders, dependent: :delete_all
@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :delete_all
   has_many :sub_reviews, dependent: :delete_all
 
+  # object method
   def locale
     case display_language_type
     when DISPLAY_LANGUAGE_TYPE_VI
