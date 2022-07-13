@@ -22,11 +22,51 @@
           <a href="#" class="btn btn-secondary rounded-circle">
             <i class="bi bi-person-fill"></i>
           </a>
-          <a class="nav-link text-dark text-uppercase" href="#" style="display:inline-block">Tài khoản</a>
+          <a class="nav-link text-dark text-uppercase" href="#" style="display:inline-block"><%= user_signed_in? ? current_user.fullName : t('.account') %></a>
         </li>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item nutdangky text-center mb-2 mx-auto" href="<%= new_user_registration_path %>">Đăng ký</a>
-          <a class="dropdown-item nutdangnhap text-center mx-auto" href="<%= new_user_session_path %>">Đăng nhập</a>
+          <% unless user_signed_in? %>
+            <%= link_to t('.signup'), new_user_registration_path, class: 'dropdown-item text-center mb-2 mx-auto' %>
+            <%= link_to t('.login'), new_user_session_path, class: 'dropdown-item text-center mx-auto' %>
+          <% else %>
+            <div class="row dropdown-item" style="line-height: 4px; margin: 0; padding: 0;">
+              <a href="<%= edit_user_registration_path %>" class="d-flex">
+                <%= image_tag 'ruby.png', style: 'width: 40px; height: 40px; margin-right: 5px;', class: 'col-3' %>
+                <div href="" class="col-9" style="padding-top: 10px;">
+                  <p style="font-weight: 600; color: black;">Nguyen Chien</p>
+                  <p style="color: #7a7e7f;"><%= t('.member_ruby') %></p>
+                </div>
+              </a>
+            </div>
+            <hr style="width: 100%; margin: 0px;">
+            <div class="row dropdown-item" style="margin: 0;">
+              <a href="" class="d-flex" style="margin-top: 15px; margin-bottom: 15px; color: #7a7e7f;">
+                <span class="col-3"><i class="bi bi-receipt"></i></span>
+                <span class="col-9">Đơn hàng của tôi</span>
+              </a>
+            </div>
+            <hr style="width: 100%; margin: 0px;">
+            <div class="row dropdown-item" style="margin: 0;">
+              <a href="" class="d-flex" style="margin-top: 15px; margin-bottom: 15px; color: #7a7e7f;">
+                <span class="col-3"><i class="bi bi-heart"></i></span>
+                <span class="col-9">Sản phẩm yêu thích</span>
+              </a>
+            </div>
+            <hr style="width: 100%; margin: 0px;">
+            <div class="row dropdown-item" style="margin: 0;">
+              <a href="<%= addresses_path %>" class="d-flex" style="margin-top: 15px; margin-bottom: 15px; color: #7a7e7f;">
+                <span class="col-3"><i class="bi bi-geo-alt"></i></span>
+                <span class="col-9">Sổ địa chỉ</span>
+              </a>
+            </div>
+            <hr style="width: 100%; margin: 0px;">
+            <div class="row dropdown-item" style="margin: 0;">
+              <a href="<%= destroy_user_session_path %>" class="d-flex" style="margin-top: 15px; margin-bottom: 15px; color: #7a7e7f;" data-method="delete">
+                <span class="col-3"><i class="bi bi-box-arrow-right"></i></span>
+                <span class="col-9">Thoát tài khoản</span>
+              </a>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="cart-text"><%= render 'layouts/cart' %></div>
