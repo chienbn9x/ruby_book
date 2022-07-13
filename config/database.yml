@@ -12,10 +12,10 @@
 default: &default
   adapter: mysql2
   encoding: utf8mb4
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: Root@123456
-  host: localhost
+  pool: <%= ENV['RUBYBOOK_DB_POLL'] %>
+  username: <%= ENV['RUBYBOOK_DB_USERNAME'] %>
+  password: <%= ENV['RUBYBOOK_DB_PASSWORD'] %>
+  host: <%= ENV['RUBYBOOK_DB_HOST'] %>
 
 development:
   <<: *default

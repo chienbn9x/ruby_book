@@ -1,1 +1,41 @@
 en:
+  carts:
+    index:
+      add_cart: "Buy more"
+      atm_note_html: '<p class="mt-4">- You will only make a transfer when you are confirmed to have enough books over the phone from Ruby.</p>
+                 <p>- The transfer time is within 2 days from the date of confirmation of enough books.</p>
+                 <p>- The transfer content should be recorded: <a href="#">[Order ID]</a> ; or <a href="#">[phone number to order]</a> </p>
+                 <p>- View NetaBooks transfer information <a href="phuong-thuc-thanh-toan.html">here</a></p>'
+      atm_payment: "Pre-payment via ATM Card/Internet Banking"
+      buy_skip_signup: "Purchase without registration"
+      cart_count_empty: "(0 product)"
+      cart_count: "(%{count} products)"
+      cart_empty: "There are no products in your cart"
+      cart_step_1_content: "NEW CUSTOMERS / LOG IN"
+      cart_step_1_number: "1"
+      cart_step_2_content: "Shipping address"
+      cart_step_2_number: "2"
+      cart_step_3_content: "Purchase payment"
+      cart_step_3_number: "3"
+      cart_title: "YOUR CART"
+      check_order: "(Please check your order before you place an order)"
+      choose_package: "Select shipping package"
+      cod_payment: "Pay in cash on delivery"
+      confirm: "By signing up, you agree to Ruby about"
+      discount: "Discount:"
+      fast_delivery: "Fast delivery"
+      fast_delivery_time: "From 1 day in Hanoi city; from 2-3 days for other Provinces / Cities"
+      forgot_password: "Forgot password"
+      login: "Login"
+      login_facebook: "Login with Facebook"
+      login_google: "Sign in with Google"
+      provisional: "Temporary calculation:"
+      rules: "Terms of Service & Privacy Policy"
+      select_payment: "Select payment method"
+      service_fee: "Service fee:"
+      signup: "Register"
+      standard_delivery: "Standard delivery"
+      standard_delivery_time: "From 1-3 days in Hanoi city; 3-5 days for other Provinces/Cities"
+      tax: "(Price includes VAT)"
+      total: "Total:"
+      transport_fee: "Shipping fee:"
