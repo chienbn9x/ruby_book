@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_11_142305) do
+ActiveRecord::Schema.define(version: 2022_07_14_141634) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(version: 2022_07_11_142305) do
   end
 
   create_table "addresses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "Contact_receiver"
-    t.string "Contact_phone"
-    t.text "Contact_address"
-    t.boolean "Addr_default"
+    t.string "contact_receiver"
+    t.string "contact_phone"
+    t.text "contact_address"
+    t.boolean "addr_default"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
