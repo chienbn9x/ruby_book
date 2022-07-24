@@ -1,0 +1,90 @@
+<!-- hr -->
+<hr style="width: 100%; color: #cf111a; margin-top: 0px; margin-bottom: 5px;">
+
+<div class="container">
+  <div class="mx-auto" style="background-color: white; padding: 20px;">
+    <span style="color: #565555; font-size: 20px; font-weight: 400;">THÊM ĐỊA CHỈ MỚI</span>
+    <%= form_with url: addresses_path, html: { class: 'row', style: 'margin-top: 12px; padding-left: 45px; padding-right: 45px;', id: 'form_address' } do |f| %>
+      <!-- content left -->
+      <div class="col-6">
+        <span style="font-size: 18px;">Thông tin liên hệ</span>
+        <div class="form-group">
+          <%= f.text_field :first_name, placeholder: 'Họ*', class: 'form-control', style: 'border: none; border-bottom: 1px solid #000; width: 100%; margin-bottom: 8px;' %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :last_name, placeholder: 'Tên*', class: 'form-control', style: 'border: none; border-bottom: 1px solid #000; width: 100%;  margin-bottom: 8px;' %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :contact_phone, placeholder: 'Ex: 0972xxxx*', class: 'form-control', style: 'border: none; border-bottom: 1px solid #000; width: 100%;  margin-bottom: 8px;' %>
+        </div>
+      </div>
+
+      <!-- content right -->
+      <div class="col-6">
+        <span style="font-size: 18px;">Địa chỉ</span>
+        <div class="form-group">
+          <%= f.text_field :hamlet, placeholder: 'Địa chỉ*', class: 'form-control', style: 'border: none; border-bottom: 1px solid #000; width: 100%; margin-bottom: 8px;' %>
+        </div>
+        <div class="form-group row" style="padding: 0px 10px; margin-bottom: 8px;">
+          <% provinces = Province.all %>
+          <% hash_province = {} %>
+          <% provinces.map do |province| %>
+            <% hash_province[province.name] = province.districts.pluck(:name) %>
+          <% end %>
+          <%= f.label :province, 'Tỉnh/Thành Phố*', class: 'form-label col-4 right-label' %>
+          <%= f.select :province, hash_province.keys, {}, { class: 'form-select col-8', style: 'width: 66%;', data: {province: hash_province} } %>
+        </div>
+        <div class="form-group row" style="padding: 0px 10px; margin-bottom: 8px;">
+          <%= f.label :district, 'Quận/Huyện*', class: 'form-label col-4 right-label' %>
+          <%= f.select :district, [], {}, class: 'form-select col-8', style: 'width: 66%;' %>
+        </div>
+        <div class="form-group row" style="padding: 0px 10px; margin-bottom: 8px;">
+          <%= f.label :village, 'Xã/Phường*', class: 'form-label col-4 right-label' %>
+          <%= f.text_field :village, class: 'form-control', style: 'border: none; border-bottom: 1px solid #000; width: 66%; margin-bottom: 8px;' %>
+        </div>
+        <div class="form-group" style="margin-top: 20px; margin-bottom: 10px;">
+          <%= f.check_box :addr_default, {}, 1, 0 %>
+          <label for="addr_default">Đặt làm địa chỉ giao hàng mặc định</label>
+        </div>
+        <script>
+          function removeAllChildNodes(parent) {
+            while(parent.firstChild) {
+              parent.removeChild(parent.firstChild);
+            }
+          }
+          var hash_province = $('#province').data('province');
+          var value_province = $('#province').val();
+          var districts = hash_province[value_province];
+          removeAllChildNodes($('#district')[0]);
+          districts.forEach(element => {
+            html = "<option value='" + element + "'>" + element + "</option>"
+            $('#district').append(html);
+          });
+
+          $('#province').change(function() {
+            var value_province = $(this).val();
+            var districts = hash_province[value_province];
+            removeAllChildNodes($('#district')[0]);
+            districts.forEach(element => {
+              html = "<option value='" + element + "'>" + element + "</option>"
+              $('#district').append(html);
+            });
+          });
+        </script>
+      </div>
+
+      <hr style="padding: 0px; width: 99%;">
+
+      <div class="d-flex justify-content-end">
+        <%= link_to 'QUAY LẠI', addresses_path, class: 'btn btn_address', style: 'margin-right: 10px;' %>
+        <%= link_to 'LƯU ĐỊA CHỈ', '', class: 'btn btn_address', id: 'submit_form_address' %>
+      </div>
+      <script>
+        $('#submit_form_address').on('click', function() {
+          $('#form_address').submit();
+          return false;
+        });
+      </script>
+    <% end %>
+  </div>
+</div>

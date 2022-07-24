@@ -27,3 +27,4 @@ Things you may want to cover:
 # PLAN
 13/07/2022 23:06 => Chuẩn bị làm mục address cho user
 14/07/2022 23:13 => Đang làm page address
+24/07/2022 23:55 => xong index new của address, tiếp theo sẽ làm edit/destroy của address

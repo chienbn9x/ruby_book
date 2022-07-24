@@ -9,31 +9,33 @@
       <h2 style="font-weight: bold; font-size: 13px; margin-top: 25px;">ĐỊA CHỈ MẶC ĐỊNH</h2>
       <!-- khoi dia chi -->
       <div class="khoi-dia-chi" style="margin-left: 10px; margin-top: 5px;">
-        <p>Chien Nguyen</p>
-        <p>so 76, ngo 302, Minh Khai</p>
-        <p>Phuong Mai Dong, Quan Hoang Mai, Ha Noi, Viet Nam</p>
-        <p>Tel: 0355430828</p>
+        <p><%= @default_address.name %></p>
+        <p><%= @default_address.split_address.first %></p>
+        <p><%= @default_address.split_address.last %></p>
+        <p>Tel: <%= @default_address.contact_phone %></p>
         <p>
-          <span>Thay doi dia chi giao hang</span>
+          <%= link_to 'Thay đổi địa chỉ giao hàng', '' %>
         </p>
       </div>
     </div>
 
     <!-- right -->
     <div class="col">
-      <button class="add-address btn float-end">THÊM ĐỊA CHỈ MỚI</button>
-      <h2 style="font-weight: bold; font-size: 13px; margin-top: 25px;">ĐỊA CHỈ MẶC ĐỊNH</h2>
+      <%= link_to 'THÊM ĐỊA CHỈ MỚI', new_address_path, class: 'add-address btn float-end' %>
+      <h2 style="font-weight: bold; font-size: 13px; margin-top: 50px;">ĐỊA CHỈ MẶC ĐỊNH</h2>
       <!-- khoi dia chi -->
-      <div class="khoi-dia-chi" style="margin-left: 10px; margin-top: 5px;">
-        <p>Chien Nguyen</p>
-        <p>so 76, ngo 302, Minh Khai</p>
-        <p>Phuong Mai Dong, Quan Hoang Mai, Ha Noi, Viet Nam</p>
-        <p>Tel: 0355430828</p>
-        <p>
-          <span>Sua dia chi </span>|
-          <span> Xoa dia chi</span>
-        </p>
-      </div>
+      <% @addresses.each do |address| %>
+        <div class="khoi-dia-chi" style="margin-left: 10px; margin-top: 5px; margin-bottom: 25px;">
+          <p><%= address.name %></p>
+          <p><%= address.split_address.first %></p>
+          <p><%= address.split_address.last %></p>
+          <p>Tel: <%= address.contact_phone %></p>
+          <p>
+            <%= link_to 'Sửa địa chỉ ', '#' %>|
+            <%= link_to ' Xóa địa chỉ', '#' %>
+          </p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

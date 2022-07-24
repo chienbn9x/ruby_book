@@ -68,3 +68,6 @@ gem 'rails-i18n'
 
 # figaro
 gem 'figaro'
+
+# draper
+gem 'draper'

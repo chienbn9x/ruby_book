@@ -1,0 +1,19 @@
+#form_address .btn_address {
+  background: #c92127;
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: auto;
+}
+
+#form_address .right-label {
+  margin-bottom: 0px;
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+  height: 100%;
+  margin-top: auto;
+  padding-bottom: 5px;
+}
