@@ -14,7 +14,7 @@
         <p><%= @default_address.split_address.last %></p>
         <p>Tel: <%= @default_address.contact_phone %></p>
         <p>
-          <%= link_to 'Thay đổi địa chỉ giao hàng', '' %>
+          <%= link_to 'Thay đổi địa chỉ giao hàng', edit_address_path(@default_address) %>
         </p>
       </div>
     </div>
@@ -23,18 +23,22 @@
     <div class="col">
       <%= link_to 'THÊM ĐỊA CHỈ MỚI', new_address_path, class: 'add-address btn float-end' %>
       <h2 style="font-weight: bold; font-size: 13px; margin-top: 50px;">ĐỊA CHỈ MẶC ĐỊNH</h2>
-      <!-- khoi dia chi -->
-      <% @addresses.each do |address| %>
-        <div class="khoi-dia-chi" style="margin-left: 10px; margin-top: 5px; margin-bottom: 25px;">
-          <p><%= address.name %></p>
-          <p><%= address.split_address.first %></p>
-          <p><%= address.split_address.last %></p>
-          <p>Tel: <%= address.contact_phone %></p>
-          <p>
-            <%= link_to 'Sửa địa chỉ ', '#' %>|
-            <%= link_to ' Xóa địa chỉ', '#' %>
-          </p>
-        </div>
+      <% if @addresses.present? %>
+        <!-- khoi dia chi -->
+        <% @addresses.each do |address| %>
+          <div class="khoi-dia-chi" style="margin-left: 10px; margin-top: 5px; margin-bottom: 25px;">
+            <p><%= address.name %></p>
+            <p><%= address.split_address.first %></p>
+            <p><%= address.split_address.last %></p>
+            <p>Tel: <%= address.contact_phone %></p>
+            <p>
+              <%= link_to 'Sửa địa chỉ ', edit_address_path(address) %>|
+              <%= link_to ' Xóa địa chỉ', '#' %>
+            </p>
+          </div>
+        <% end %>
+      <% else %>
+        <span style="font-size: 13px; color: #333; margin-left: 10px;">Bạn không có địa chỉ khác trong Sổ địa chỉ.</span>
       <% end %>
     </div>
   </div>

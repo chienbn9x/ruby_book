@@ -1,9 +1,13 @@
 class AddressesController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_addresses_blank?, only: [:index]
 
   def index
-    @default_address = Address.find_by(addr_default: true).decorate
-    @addresses = Address.where(addr_default: false).decorate
+    @default_address = Address.find_by(addr_default: true)
+    @addresses = Address.where(addr_default: false)
+
+    @default_address = @default_address.decorate if @default_address.present?
+    @addresses = @addresses.decorate if @addresses.present?
   end
 
   def new
@@ -36,6 +40,11 @@ class AddressesController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def check_addresses_blank?
+    redirect_to new_address_path unless Address.all.present?
   end
 
 end

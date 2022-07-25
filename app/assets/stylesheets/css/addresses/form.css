@@ -17,3 +17,16 @@
   margin-top: auto;
   padding-bottom: 5px;
 }
+
+#form_address .left input {
+  border: none;
+  border-bottom: 1px solid #000;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+#form_address .right input[type=text] {
+  border: none;
+  border-bottom: 1px solid #000;
+  margin-bottom: 8px;
+}
