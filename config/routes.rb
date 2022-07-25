@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   post '/orders/:id/inc', to: 'orders#inc', as: 'order_inc'
 
   # address
-  resources :addresses
+  resources :addresses, only: [:index, :new, :create, :edit, :update, :destroy]
   
 end

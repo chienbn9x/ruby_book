@@ -1,40 +1,41 @@
-<%= form_with url: addresses_path, html: { class: 'row', style: 'margin-top: 12px; padding-left: 45px; padding-right: 45px;', id: 'form_address' } do |f| %>
+<%= form_with model: address, html: { class: 'row', style: 'margin-top: 12px; padding-left: 45px; padding-right: 45px;', id: 'form_address' } do |f| %>
   <!-- content left -->
   <div class="col-6 left">
     <span style="font-size: 18px;">Thông tin liên hệ</span>
     <div class="form-group">
-      <%= f.text_field :first_name, placeholder: 'Họ*', class: 'form-control' %>
+      <%= f.text_field :first_name, value: address.first_name, placeholder: 'Họ*', class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.text_field :last_name, placeholder: 'Tên*', class: 'form-control' %>
+      <%= f.text_field :last_name, value: address.last_name, placeholder: 'Tên*', class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.text_field :contact_phone, placeholder: 'Ex: 0972xxxx*', class: 'form-control' %>
+      <%= f.text_field :contact_phone, value: address.contact_phone, placeholder: 'Ex: 0972xxxx*', class: 'form-control' %>
     </div>
   </div>
 
   <!-- content right -->
   <div class="col-6 right">
     <span style="font-size: 18px;">Địa chỉ</span>
+    <% hash_address = address.detach_address %>
     <div class="form-group">
-      <%= f.text_field :hamlet, placeholder: 'Địa chỉ*', class: 'form-control', style: 'width: 100%;' %>
+      <%= f.text_field :hamlet, value: hash_address[:hamlet], placeholder: 'Địa chỉ*', class: 'form-control', style: 'width: 100%;' %>
     </div>
     <div class="form-group row" style="padding: 0px 10px; margin-bottom: 8px;">
       <% hash_province = Province.hash_province %>
       <%= f.label :province, 'Tỉnh/Thành Phố*', class: 'form-label col-4 right-label' %>
-      <%= f.select :province, hash_province.keys, {}, { class: 'form-select col-8', style: 'width: 66%;', data: {province: hash_province} } %>
+      <%= f.select :province, hash_province.keys, {selected: hash_address[:province]}, { class: 'form-select col-8', style: 'width: 66%;', data: {province: hash_province} } %>
     </div>
     <div class="form-group row" style="padding: 0px 10px; margin-bottom: 8px;">
       <%= f.label :district, 'Quận/Huyện*', class: 'form-label col-4 right-label' %>
-      <%= f.select :district, [], {}, class: 'form-select col-8', style: 'width: 66%;' %>
+      <%= f.select :district, [], {}, class: 'form-select col-8', style: 'width: 66%;', data: {district: hash_address[:district]} %>
     </div>
     <div class="form-group row" style="padding: 0px 10px; margin-bottom: 8px;">
       <%= f.label :village, 'Xã/Phường*', class: 'form-label col-4 right-label' %>
-      <%= f.text_field :village, class: 'form-control', style: 'width: 66%;' %>
+      <%= f.text_field :village, value: hash_address[:village], class: 'form-control', style: 'width: 66%;' %>
     </div>
     <div class="form-group" style="margin-top: 20px; margin-bottom: 10px;">
-      <%= f.check_box :addr_default, {}, 1, 0 %>
-      <label for="addr_default">Đặt làm địa chỉ giao hàng mặc định</label>
+      <%= f.check_box :addr_default, {checked: address.addr_default}, 1, 0 %>
+      <label for="address_addr_default">Đặt làm địa chỉ giao hàng mặc định</label>
     </div>
     <script>
       function removeAllChildNodes(parent) {
@@ -42,22 +43,28 @@
           parent.removeChild(parent.firstChild);
         }
       }
-      var hash_province = $('#province').data('province');
-      var value_province = $('#province').val();
+      var hash_province = $('#address_province').data('province');
+      var data_district = $('#address_district').data('district');
+      var value_province = $('#address_province').val();
+      console.log(hash_province);
       var districts = hash_province[value_province];
-      removeAllChildNodes($('#district')[0]);
+      removeAllChildNodes($('#address_district')[0]);
       districts.forEach(element => {
-        html = "<option value='" + element + "'>" + element + "</option>"
-        $('#district').append(html);
+        if(data_district == element) {
+          html = "<option value='" + element + "' selected>" + element + "</option>"
+        } else {
+          html = "<option value='" + element + "'>" + element + "</option>"
+        }
+        $('#address_district').append(html);
       });
 
-      $('#province').change(function() {
+      $('#address_province').change(function() {
         var value_province = $(this).val();
         var districts = hash_province[value_province];
-        removeAllChildNodes($('#district')[0]);
+        removeAllChildNodes($('#address_district')[0]);
         districts.forEach(element => {
           html = "<option value='" + element + "'>" + element + "</option>"
-          $('#district').append(html);
+          $('#address_district').append(html);
         });
       });
     </script>

@@ -11,32 +11,29 @@ class AddressesController < ApplicationController
   end
 
   def new
-    @address = Address.new
+    @address = Address.new.decorate
   end
 
   def create
-    name = params[:first_name] + " " + params[:last_name]
-    contact_address = params[:hamlet] + ", " + params[:village] + ", " + params[:district] + ", " + params[:province]
     @address = Address.new
-    @address.contact_phone = params[:contact_phone]
-    @address.contact_address = contact_address
-    @address.user_id = current_user.id
-    @address.name = name
+    @address = set_address_param(@address)
 
-    if ActiveModel::Type::Boolean.new.cast(params[:addr_default])
-      Address.update_all(addr_default: false)
-    else
-      @address.addr_default = true if Address.where(addr_default: true).blank?
-    end
     if @address.save
       redirect_to addresses_path
     end
   end
 
-  def show
+  def edit
+    @address = Address.find(params[:id]).decorate
   end
 
-  def edit
+  def update
+    @address = Address.find(params[:id])
+    @address = set_address_param(@address)
+
+    if @address.save
+      redirect_to addresses_path
+    end
   end
 
   def destroy
@@ -45,6 +42,34 @@ class AddressesController < ApplicationController
   private
   def check_addresses_blank?
     redirect_to new_address_path unless Address.all.present?
+  end
+
+  def set_address_param(address)
+    name = params[:address][:first_name] + " " + params[:address][:last_name]
+    contact_address = params[:address][:hamlet] + ", " + params[:address][:village] + ", " + params[:address][:district] + ", " + params[:address][:province]
+    address.contact_phone = params[:address][:contact_phone]
+    address.contact_address = contact_address
+    address.user_id = current_user.id
+    address.name = name
+
+    if ActiveModel::Type::Boolean.new.cast(params[:address][:addr_default])
+      if check_action_create && Address.all.present?
+        Address.update_all(addr_default: false)
+      elsif check_action_update
+        Address.update_all(addr_default: false)
+      end
+      address.addr_default = true
+    end
+
+    address
+  end
+
+  def check_action_create
+    params[:action].include?("create")
+  end
+
+  def check_action_update
+    params[:action].include?("update")
   end
 
 end
