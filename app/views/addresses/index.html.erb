@@ -33,7 +33,7 @@
             <p>Tel: <%= address.contact_phone %></p>
             <p>
               <%= link_to 'Sửa địa chỉ ', edit_address_path(address) %>|
-              <%= link_to ' Xóa địa chỉ', '#' %>
+              <%= link_to ' Xóa địa chỉ', address_path(address), data: { confirm: 'Are you sure?', method: :delete, remote: true }, class: 'destroy_address' %>
             </p>
           </div>
         <% end %>
