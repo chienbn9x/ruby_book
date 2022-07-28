@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_11_142305) do
+ActiveRecord::Schema.define(version: 2022_07_24_153941) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -65,13 +65,13 @@ ActiveRecord::Schema.define(version: 2022_07_11_142305) do
   end
 
   create_table "addresses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "Contact_receiver"
-    t.string "Contact_phone"
-    t.text "Contact_address"
-    t.boolean "Addr_default"
+    t.string "contact_phone"
+    t.text "contact_address"
+    t.boolean "addr_default", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.string "name"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -94,6 +94,15 @@ ActiveRecord::Schema.define(version: 2022_07_11_142305) do
     t.boolean "role", default: false
     t.bigint "category_id"
     t.index ["category_id"], name: "index_categories_on_category_id"
+  end
+
+  create_table "districts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "district_type"
+    t.bigint "province_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["province_id"], name: "index_districts_on_province_id"
   end
 
   create_table "orderitems", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -165,6 +174,14 @@ ActiveRecord::Schema.define(version: 2022_07_11_142305) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "provinces", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "province_type"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.string "Title"
@@ -207,10 +224,20 @@ ActiveRecord::Schema.define(version: 2022_07_11_142305) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "villages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "village_type"
+    t.bigint "district_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["district_id"], name: "index_villages_on_district_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "users"
   add_foreign_key "categories", "categories"
+  add_foreign_key "districts", "provinces"
   add_foreign_key "orderitems", "orders"
   add_foreign_key "orderitems", "products"
   add_foreign_key "orders", "orderstatuses"
@@ -220,4 +247,5 @@ ActiveRecord::Schema.define(version: 2022_07_11_142305) do
   add_foreign_key "reviews", "users"
   add_foreign_key "sub_reviews", "reviews"
   add_foreign_key "sub_reviews", "users"
+  add_foreign_key "villages", "districts"
 end

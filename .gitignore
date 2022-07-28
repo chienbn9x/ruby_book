@@ -38,3 +38,6 @@ yarn-debug.log*
 # file config
 /config/application.yml
 
+## database
+/db/schema.rb
+

@@ -2,7 +2,7 @@
 <hr style="width: 100%; color: #cf111a; margin-top: 0px;">
 
 <!-- giao diện giỏ hàng  -->
-<section class="content my-3" style="min-height: 560px;">
+<section class="content my-3">
   <div class="container">
     <div class="cart-page bg-white">
       <div class="row">
@@ -97,105 +97,13 @@
         <!-- giao diện phần thanh toán nằm bên phải  -->
         <div class="col-md-4 cart-steps ps-0">
           <div id="cart-steps-accordion" role="tablist" aria-multiselectable="true">
-            <!-- bước số 1: đăng nhập hoặc đăng ký -->
-            <div class="card" style="border-radius: 0;">
-              <div class="card-header cardheader" role="tab" id="step1header">
-                <h5 class="mb-0">
-                  <a data-bs-toggle="collapse" data-bs-parent="#cart-steps-accordion" href="#step1contentid" aria-expanded="true" aria-controls="step1contentid" class="text-uppercase header">
-                    <span class="steps"><%= t(".cart_step_1_number") %></span>
-                    <span class="label"><%= t(".cart_step_1_content") %></span>
-                    <i class="bi bi-chevron-right float-end"></i>
-                  </a>
-                </h5>
-              </div>
-              <div id="step1contentid" class="collapse in" role="tabpanel" aria-labelledby="step1header" class="stepscontent">
-                <div class="card-body p-0">
-                  <nav>
-                    <div class="nav nav-tabs dangnhap-dangky" id="nav-tab" role="tablist">
-                      <a class="nav-item nav-link active text-center text-uppercase" id="nav-dangnhap-tab" data-bs-toggle="tab" href="#nav-dangnhap" role="tab"
-                        aria-controls="nav-dangnhap" aria-selected="true"><%= t(".login") %></a>
-                      <a class="nav-item nav-link text-center text-uppercase" id="nav-dangky-tab" data-bs-toggle="tab" href="#nav-dangky" role="tab"
-                        aria-controls="nav-dangky" aria-selected="false"><%= t(".signup") %></a>
-                    </div>
-                  </nav>
-                  <div class="tab-content" id="nav-tabContent" style="border: none;">
-                    <div class="tab-pane fade show active" id="nav-dangnhap" role="tabpanel" aria-labelledby="nav-dangnhap-tab">
-                      <form id="form-signin-cart" class="form-signin mt-2">
-                        <div class="form-label-group mb-3">
-                          <input type="email" id="inputEmail" class="form-control" placeholder="Nhập địa chỉ email" name="email" required autofocus style="width: 100%;">
-                        </div>
-                        <div class="form-label-group mb-3">
-                          <input type="password" id="inputPassword" class="form-control" placeholder="Mật khẩu" name="password" required style="width: 100%;">
-                        </div>
-                        <div class="custom-control custom-checkbox mb-3">
-                          <a href="#" class="float-end text-decoration-none" style="color: #F5A623"><%= t(".forgot_password") %></a>
-                        </div>
-                        <button class="btn btn-lg btn-block btn-signin text-uppercase text-white" type="submit" style="background: #F5A623; width: 100%;">
-                          <%= t(".login") %>
-                        </button>
-
-                        <hr class="my-4">
-                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
-                          <i class="bi bi-google me-2"></i> 
-                          <%= t(".login_google") %>
-                        </button>
-                        <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit">
-                          <i class="bi bi-facebook me-2"></i> 
-                          <%= t(".login_facebook") %>
-                        </button>
-                      </form>
-                      <div class="btnduoicung" style="padding: 0 15px 15px 15px;">
-                        <button class="btn btn-lg btn-block btn-shopping-without-signup text-uppercase text-white" style="background: #F5A623">
-                          <%= t(".buy_skip_signup") %>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="nav-dangky" role="tabpanel" aria-labelledby="nav-dangky-tab">
-                      <form id="form-signup-cart" class="form-signin mt-2">
-                        <div class="form-label-group">
-                          <input type="text" id="inputName" class="form-control" placeholder="Nhập họ và tên" name="name" required autofocus>
-                        </div>
-                        <div class="form-label-group">
-                          <input type="text" id="inputPhone" class="form-control" placeholder="Nhập số điện thoại" name="phone" required>
-                        </div>
-                        <div class="form-label-group">
-                          <input type="email" id="inputEmail" class="form-control" placeholder="Nhập địa chỉ email" name="email" required>
-                        </div>
-
-                        <div class="form-label-group">
-                          <input type="password" id="inputPassword" class="form-control" placeholder="Nhập mật khẩu" name="password" required>
-                        </div>
-                        <div class="form-label-group mb-3">
-                          <input type="password" id="inputConfirmPassword" class="form-control" name="confirm_password" placeholder="Nhập lại mật khẩu" required>
-                        </div>
-                        <div class="custom-control custom-checkbox mb-3">
-                          <p class="text-center"><%= t(".confirm") %></p>
-                          <a href="#" class="text-decoration-none text-center" style="color: #F5A623"><%= t(".rules") %></a>
-                        </div>
-                        <hr class="mt-3 mb-2">
-                        <button class="btn btn-lg btn-block btn-signin text-uppercase text-white mt-3" type="submit" style="background: #F5A623; width: 100%;">
-                          <%= t(".signup") %>
-                        </button>
-
-                      </form>
-                      <div class="btnduoicung" style="padding: 0 15px 15px 15px;">
-                        <button class="btn btn-lg btn-block btn-shopping-without-signup text-uppercase text-white" style="background: #F5A623">
-                          <%= t(".buy_skip_signup") %>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- bước số 2: nhập địa chỉ giao hàng  -->
+            <!-- bước số 1: nhập địa chỉ giao hàng  -->
             <div class="card" style="border-radius: 0;">
               <div class="card-header" role="tab" id="step2header">
                 <h5 class="mb-0">
                   <a data-bs-toggle="collapse" data-bs-parent="#cart-steps-accordion" href="#step2contentid" aria-expanded="true" aria-controls="step2contentid" class="text-uppercase header">
-                    <span class="steps"><%= t(".cart_step_2_number") %></span>
-                    <span class="label"><%= t(".cart_step_2_content") %></span>
+                    <span class="steps"><%= t(".cart_step_1_number") %></span>
+                    <span class="label"><%= t(".cart_step_1_content") %></span>
                     <i class="bi bi-chevron-right float-end"></i>
                   </a>
                 </h5>
@@ -224,17 +132,18 @@
                     <div class="form-label-group">
                       <textarea type="text" id="inputNote" class="form-control" placeholder="Nhập ghi chú (Nếu có)" name="note"></textarea>
                     </div>
+                    <input type="checkbox" name="default-address" id="default-address"> <%= t('.default_address') %>
                   </form>
                 </div>
               </div>
             </div>
-            <!-- bước 3: thanh toán đặt mua  -->
+            <!-- bước 2: thanh toán đặt mua  -->
             <div class="card">
               <div class="card-header" role="tab" id="step3header">
                 <h5 class="mb-0">
                   <a data-bs-toggle="collapse" data-bs-parent="#cart-steps-accordion" href="#step3contentid" aria-expanded="true" aria-controls="step3contentid" class="text-uppercase header">
-                    <span class="steps"><%= t(".cart_step_3_number") %></span>
-                    <span class="label"><%= t(".cart_step_3_content") %></span>
+                    <span class="steps"><%= t(".cart_step_2_number") %></span>
+                    <span class="label"><%= t(".cart_step_2_content") %></span>
                     <i class="bi bi-chevron-right float-end"></i>
                   </a>
                 </h5>

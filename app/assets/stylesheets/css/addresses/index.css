@@ -1,0 +1,22 @@
+#address-index .khoi-dia-chi p {
+  margin: 0px;
+  margin-top: 5px;
+}
+
+#address-index .khoi-dia-chi p:last-child a:first-child {
+  font-weight: bold;
+  color: #c92127;
+}
+
+#address-index .khoi-dia-chi p:last-child a:last-child {
+  font-weight: bold;
+  color: #64646e;
+}
+
+#address-index .add-address {
+  background: #c92127;
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px;
+}
