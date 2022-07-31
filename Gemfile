@@ -71,3 +71,9 @@ gem 'figaro'
 
 # draper
 gem 'draper'
+
+#mechanize
+gem 'mechanize'
+
+# nokogiri
+gem 'nokogiri', '~> 1.13', '>= 1.13.8'

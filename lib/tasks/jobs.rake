@@ -51,3 +51,10 @@ namespace :import_db do
   end
 
 end
+
+namespace :crawl do
+  desc "Test shell script"
+  task book: :environment do
+    agent = Crawl.new.crawl_book
+  end
+end
