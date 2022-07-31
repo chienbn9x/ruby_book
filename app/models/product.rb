@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 
-  validates :title, :publication_year, :publication_company, :authors, :price, presence: true
+  validates :title, :authors, :price, presence: true
   validates :height, :width, :weight, :layout, :number_page, presence: true
 
   belongs_to :category
