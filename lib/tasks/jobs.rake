@@ -2,7 +2,7 @@ namespace :import_db do
   desc "This is import data to table provinces"
   task province: :environment do
     unless Province.count == 63
-      File.open('./dump/provinces.txt', 'r').map do |line|
+      File.open('./dump/region/provinces.txt', 'r').map do |line|
         id, name, type, slug = line.strip.split("\t")
         id = id.gsub("(","").gsub(",","").gsub("'","").to_i
         name = name.gsub(",","").gsub("'","")
@@ -19,7 +19,7 @@ namespace :import_db do
   desc "This is import data to table districts"
   task district: :environment do
     unless District.count == 705
-      File.open('./dump/districts.txt', 'r').map do |line|
+      File.open('./dump/region/districts.txt', 'r').map do |line|
         id, name, type, province_id = line.strip.split("\t")
         id = id.gsub("(","").gsub(",","").gsub("'","").to_i
         name = name.gsub(",","").gsub("'","")
@@ -36,7 +36,7 @@ namespace :import_db do
   desc "This is import data to table villages"
   task village: :environment do
     unless Village.count == 10603
-      File.open('./dump/villages.txt', 'r').map do |line|
+      File.open('./dump/region/villages.txt', 'r').map do |line|
         id, name, type, district_id = line.strip.split("\t")
         id = id.gsub("(","").gsub(",","").gsub("'","").to_i
         name = name.gsub(",","").gsub("'","")
@@ -47,6 +47,13 @@ namespace :import_db do
       end
     else
       puts "Village exists!"
+    end
+  end
+
+  desc "Add book of category to table products"
+  task book: :environment do
+    Category.where(role: false).decorate.each do |category|
+      puts category.to_name_file
     end
   end
 

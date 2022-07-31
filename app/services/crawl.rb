@@ -5,17 +5,17 @@ class Crawl
   end
 
   def crawl_book
-    for type in 1..CATEGORY_COUNT
+    for type in 1..1
       executive = true
       name_file = ""
 
-      case type
+      case NHAN_VAT_BAI_HOC_KINH_DOANH
       when TIEU_THUYET
         url = "https://www.fahasa.com/sach-trong-nuoc/van-hoc-trong-nuoc/tieu-thuyet.html"
-        name_file = "data_tieu_thuyet.txt"
+        name_file = "tieu_thuyet.txt"
       when TRUYEN_NGAN_TAN_VAN
         url = "https://www.fahasa.com/sach-trong-nuoc/van-hoc-trong-nuoc/truyen-ngan-tan-van.html"
-        name_file = "data_truyen_ngan_tan_van.txt"
+        name_file = "truyen_ngan_tan_van.txt"
       when NGON_TINH
         url = "https://www.fahasa.com/sach-trong-nuoc/van-hoc-trong-nuoc/ngon-tinh.html"
         name_file = "ngon_tinh.txt"
@@ -224,7 +224,7 @@ class Crawl
             result << size[0]
             result << size[2]
             # translator
-            result << book_infor.search("td.data_translator").text.strip
+            result << book_infor.search("td.data_translator").text.strip.gsub("\n", "")
             # publication_company
             result << book_infor.search("td.data_publisher").text.strip
             # layout
@@ -241,7 +241,7 @@ class Crawl
           end
         end
 
-        name_file = "./dump/" + name_file
+        name_file = "./dump/book/" + name_file
         file = File.new(name_file, "w+")
         file.puts(content_file)
         file.close
