@@ -200,7 +200,7 @@ class Crawl
             current_book = @agent.get(link)
             imgs = current_book.search("a.include-in-gallery")
             result << imgs[0].attr("href")
-            result << imgs[1].attr("href") if imgs.size > 1
+            result << (imgs.size > 1 && imgs[1].attr("href").present? ? imgs[1].attr("href") : "empty")
             # title
             result << current_book.search("h1").text.strip
             discount = current_book.at("span.discount-percent")

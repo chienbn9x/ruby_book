@@ -54,12 +54,58 @@ namespace :import_db do
 
   desc "Add book of category to table products"
   task book: :environment do
-    # Category.where(role: false).decorate.each do |category|
-    #   name_file = "./dump/book/" + category.to_name_file + ".txt"
-      
-    # end
-    downloaded_image = URI.open("https://cdn0.fahasa.com/media/catalog/product/i/m/image_195509_1_36793.jpg")
-    puts downloaded_image
+    Category.where(role: false).decorate.each do |category|
+      sub_name = category.to_name_file
+      name_file = "./dump/book/" + sub_name + ".txt"
+      file = File.open(name_file)
+      count = 0
+      file.readlines.map do |line|
+        begin
+          img0, img1, title, discount, price, publication_year, authors, height, 
+          width, translator, publication_company, layout, number_page, weight = line.strip.split('-+chien+-')
+          next if Product.where(title: title).count > 0
+          product = category.products.new
+          # img
+          downloaded_image0 = URI.open(img0)
+          product.images.attach(io: downloaded_image0, filename: "#{sub_name}1.jpq")
+          unless img1 == "empty"
+            downloaded_image1 = URI.open(img1)
+            product.images.attach(io: downloaded_image1, filename: "#{sub_name}2.jpg")
+          end
+          # title
+          product.title = title
+          # discount
+          product.discount = discount.to_f
+          # price
+          product.price = price.to_f
+          # publication_year
+          product.publication_year = publication_year
+          # authors
+          product.authors = authors
+          # height
+          product.height = height.to_i
+          # width
+          product.width = width.to_i
+          # translator
+          product.translator = translator
+          # publication_company
+          product.publication_company = publication_company
+          # layout
+          product.layout = layout
+          # number_page
+          product.number_page = number_page.to_i
+          # weight
+          product.weight = weight.to_i
+
+          # save
+          count += 1 if product.save
+        rescue
+          next
+        end
+      end
+      puts "import #{sub_name} in #{category.category.name} success #{count} record!"
+      file.close
+    end
   end
 
 end
