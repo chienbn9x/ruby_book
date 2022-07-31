@@ -335,6 +335,11 @@ img.card-img-top.anh {
     position: relative;
     top: 15px;
     transition: 0.3s;
+    height: 241px;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 ul span.text-muted {

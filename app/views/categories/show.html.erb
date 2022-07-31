@@ -10,9 +10,9 @@
     <div class="the-loai-sach">
       <ul class="row list-unstyled d-flex">
         <% number = 10 - @category.products.count %>
-        <% @category.products.each do |product| %>
+        <% @category.products.limit(10).each do |product| %>
         <li class="col">
-          <a href="#" class="danh-muc text-decoration-none">
+          <a href="<%= product_path(product) %>" class="danh-muc text-decoration-none">
             <div class="img-categories text-center">
               <%= image_tag product.images.first, alt: product.title.split.join('-') %>
             </div>
@@ -39,7 +39,7 @@
         <div class="tag">
           <label>Tác giả nổi bật:</label>
           <a href="#">Tất cả</a>
-          <% @category.products.each do |product| %>
+          <% @category.products.limit(6).each do |product| %>
             <%= link_to product.authors, '#' %>
           <% end %>
         </div>
@@ -47,8 +47,8 @@
           <div class="hien-thi">
             <label for="hienthi-select" class="label-select">Hiển thị</label>
             <select class="hienthi-select">
-              <option value="30">30</option>
-              <option value="60">60</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
             </select>
           </div>
           <div class="sap-xep">

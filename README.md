@@ -31,3 +31,4 @@ Things you may want to cover:
 25/07/2022 15:37 => đang làm đổ dữ liệu ra form edit, làm tiếp
 26/07/2022 00:10 => xong edit, tiếp theo sẽ làm ajax destroy
 28/07/2022 00:44 => xong xoa address, xoa trong cart
+31/07/2022 23:38 => còn rất nhiều view lỗi css, tìm từng trang để sửa

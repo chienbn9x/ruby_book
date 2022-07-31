@@ -22,20 +22,20 @@
         <div class="col-md-5 khoianh">
           <div class="anhto mb-4" style="height: 431px;">
             <a class="active" href="" data-fancybox="thumb-img">
-              <%= image_tag @product.images.first, class: 'product-image', alt: 'lap-ke-hoach-kinh-doanh-hieu-qua-mt', style: 'width: 100%;' %>
+              <%= image_tag @product.images.first, class: 'product-image', alt: 'lap-ke-hoach-kinh-doanh-hieu-qua-mt', style: 'width: auto; max-width:431px;  height:431px;' %>
             </a>
             <a href="" data-fancybox="thumb-img"></a>
           </div>
           <div class="list-anhchitiet d-flex mb-4" style="margin-left: 2rem;">
-            <% @product.images.each do |image| %>
-            <%= image_tag image, class: 'thumb-img thumb1 mr-3 img-fluid',
+            <% @product.images.each_with_index do |image, index| %>
+            <%= image_tag image, class: "thumb-img thumb#{index} mr-3 img-fluid",
               alt: 'lap-ke-hoach-kinh-doanh-hieu-qua-mt' %>
             <% end %>
           </div>
         </div>
         <script type="text/javascript">
           // thumb-img
-          $(".thumb-img.thumb1").addClass('vienvang');
+          $(".thumb-img.thumb0").addClass('vienvang');
           $('.thumb-img').on('click', function() {
             $('.product-image').attr('src', this.src);
             $('.thumb-img:not(:hover)').removeClass('vienvang');
@@ -115,16 +115,30 @@
             <div class="col-md-5">
               <div class="thongtinsach">
                 <ul>
-                  <li>Tác giả: <a href="#" class="tacgia"><%= @product.authors %></a></li>
-                  <li>Năm xuất bản: <b><%= @product.publication_year %></b></li>
-                  <li>Kích thước: <b><%= @product.height %> x <%= @product.width %> cm</b></li>
-                  <% unless @product.translator.nil? %>
-                  <li>Dịch giả: <%= @product.translator %></li>
+                  <% if @product.authors.present? %>
+                    <li>Tác giả: <a href="#" class="tacgia"><%= @product.authors %></a></li>
                   <% end %>
-                  <li>Nhà xuất bản: <%= @product.publication_company %></li>
-                  <li>Hình thức bìa: <b><%= @product.layout %></b></li>
-                  <li>Số trang: <b><%= @product.number_page %></b></li>
-                  <li>Cân nặng: <b><%= @product.weight %></b></li>
+                  <% if @product.publication_year.present? %>
+                    <li>Năm xuất bản: <b><%= @product.publication_year %></b></li>
+                  <% end %>
+                  <% if @product.width.present? %>
+                    <li>Kích thước: <b><%= @product.height %> x <%= @product.width %> cm</b></li>
+                  <% end %>
+                  <% if @product.translator.present? %>
+                    <li>Dịch giả: <%= @product.translator %></li>
+                  <% end %>
+                  <% if @product.publication_company.present? %>
+                    <li>Nhà xuất bản: <%= @product.publication_company %></li>
+                  <% end %>
+                  <% if @product.layout.present? %>
+                    <li>Hình thức bìa: <b><%= @product.layout %></b></li>
+                  <% end %>
+                  <% if @product.number_page.present? %>
+                    <li>Số trang: <b><%= @product.number_page %></b></li>
+                  <% end %>
+                  <% if @product.weight.present? %>
+                    <li>Cân nặng: <b><%= @product.weight %></b></li>
+                  <% end %>
                 </ul>
               </div>
             </div>
