@@ -5,11 +5,11 @@ class Crawl
   end
 
   def crawl_book
-    for type in 1..1
+    for type in 1..CATEGORY_COUNT
       executive = true
       name_file = ""
 
-      case NHAN_VAT_BAI_HOC_KINH_DOANH
+      case type
       when TIEU_THUYET
         url = "https://www.fahasa.com/sach-trong-nuoc/van-hoc-trong-nuoc/tieu-thuyet.html"
         name_file = "tieu_thuyet.txt"
@@ -21,7 +21,7 @@ class Crawl
         name_file = "ngon_tinh.txt"
       when TRINH_THAM_KIEM_HIEP
         url = "https://www.fahasa.com/sach-trong-nuoc/van-hoc-trong-nuoc/truyen-trinh-tham-vien-tuong.html"
-        name_file = "trinh_tham_kiem_hiep.txt"
+        name_file = "truyen_trinh_tham_kiem_hiep.txt"
       when TAC_PHAM_KINH_DIEN
         url = "https://www.fahasa.com/sach-trong-nuoc/van-hoc-trong-nuoc/tac-pham-kinh-dien.html"
         name_file = "tac_pham_kinh_dien.txt"

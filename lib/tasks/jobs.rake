@@ -1,3 +1,5 @@
+require 'open-uri'
+
 namespace :import_db do
   desc "This is import data to table provinces"
   task province: :environment do
@@ -52,9 +54,12 @@ namespace :import_db do
 
   desc "Add book of category to table products"
   task book: :environment do
-    Category.where(role: false).decorate.each do |category|
-      puts category.to_name_file
-    end
+    # Category.where(role: false).decorate.each do |category|
+    #   name_file = "./dump/book/" + category.to_name_file + ".txt"
+      
+    # end
+    downloaded_image = URI.open("https://cdn0.fahasa.com/media/catalog/product/i/m/image_195509_1_36793.jpg")
+    puts downloaded_image
   end
 
 end
