@@ -39,6 +39,10 @@ group :development do
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'rack-mini-profiler', '~> 2.0'
+  # binding pry 
+  gem 'pry-rails'
+  gem 'pry-nav'
+  gem 'pry', '~> 0.13.1'
 end
 
 group :test do
@@ -58,10 +62,6 @@ gem 'devise'
 
 #active admin
 gem 'activeadmin'
-
-# binding pry 
-gem 'pry-rails', :group => :development
-gem 'pry', '~> 0.13.1'
 
 # i18n
 gem 'rails-i18n'

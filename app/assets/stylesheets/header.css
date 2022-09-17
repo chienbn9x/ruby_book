@@ -1,0 +1,241 @@
+/* css cho navbar  */
+
+.navbar-nav li .nav-link{
+    font-size: 13px;
+    padding-top: 17px;
+    font-weight: 400;
+ }
+ 
+ .navbar input.form-control {
+     border: 2px solid #CF111A!important;
+     
+ }
+ 
+ li.nav-item a{
+     transition: 0.2s;
+ }
+ 
+ li.nav-item:hover a {
+     color: #F5A623!important;
+ }
+ 
+ a.nav-link {
+     padding-top: 8px;
+ }
+ 
+ a.navbar-brand {
+     font-size: 34px;
+ }
+ 
+ li.nav-item.account {margin-right: 0.5rem;}
+ 
+ a.nav-link {
+     margin-left: -0.5rem;
+ }
+ 
+ .navbar-expand-md .navbar-nav .nav-link.giohang{
+     padding-right: 0!important;
+ }
+ 
+ i.fa.fa-shopping-cart {
+     margin-left: -1px;
+     margin-top: 5px;
+     display: inline-block;
+ }
+ 
+ a.btn.btn-secondary.rounded-circle {
+     width: 42px;
+     height: 40px;
+     background-color: #dfdfdf;
+     border: #cacaca;
+ }
+ 
+ .cart-amount{
+     height: 18px;
+     width: 18px;
+     border-radius: 50%;
+     background: #F5A623;
+     font-size: 12px;
+     position: relative;
+     left: 19px;
+     bottom: 32px;
+     transition: 0.2s;
+ }
+ 
+ .nav-item.giohang:hover .cart-amount{
+     background: #CF111A;
+     color: white;
+ }
+ 
+ .dropdown-menu {
+     padding: 11px;
+     width: 236px;
+ }
+ 
+ a.dropdown-item {
+     background: #F5A623;
+     border-radius: 4px;
+     font-size: 14px;
+     color: white;
+     padding: 9px;
+     width: 90%;
+ }
+ 
+ a.dropdown-item:hover {
+     background: #F5A623;
+     color: white;
+     box-shadow: 0px 2px 5px #F5A623;
+ }
+ 
+ .navbar-nav .nav-item.active a{
+     color: #F5A623;
+ }
+ 
+ .nutcuonlen{
+     visibility: hidden;
+     opacity: 0;
+     transition: 0.5s;
+ }
+ 
+ .nutcuonlen.hienthi{
+     visibility: visible;
+     opacity: 1;
+ }
+ 
+ .navbar.fixed-top{
+     box-shadow: 0px 5px 20px grey;
+ }
+ /* het css cho navbar  */
+
+ /* css cho carousel */
+ .carousel-control-prev, .carousel-control-next {
+    background: none !important;
+ }
+ /* het css cho carousel */
+
+ /* category */
+ .categorycontent ul{
+    list-style: none;
+    background: white;
+    padding-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  .categorycontent > ul > li:hover{
+    background-color: #CF111A;
+    cursor: pointer;
+  }
+
+  .categorycontent > ul > li:hover > a{
+    color:white;
+  }
+
+  .categorycontent ul li:hover i.fa.fa-chevron-right{
+    color:white;
+  }
+
+  .categorycontent > ul > li{
+    border-bottom: 1px solid #f8e1e1;
+    height: 35px;
+  }
+
+  .categorycontent > ul > li:last-child{
+    border-bottom: none
+  }
+
+  .categorycontent  ul  li  a{
+    line-height: 35px;
+    padding-left: 16px;
+    font-weight: 400;
+    font-size: 13px;
+  }
+
+  .categorycontent ul li ul{
+    display: none;
+    width: 750px;
+    border: 1px solid #d1d1d1;
+    position: absolute;
+    z-index: 99;
+    top: -1px;
+    left: 235px;
+    box-shadow: 0px 1px 3px #e7dddd;
+    background-color: white;
+  }
+
+  .categorycontent ul li ul:hover{
+    cursor: auto;
+  }
+
+  .categorycontent ul li a{
+    text-decoration: none;
+    color: black;
+  }
+
+  .categorycontent ul li:hover ul{
+    display:block;
+    height: 100%;
+  }
+
+  ul i.fa.fa-chevron-right{
+    font-size: 10px;
+    color: #d1d1d1;
+    line-height: 35px;
+    padding-right: 20px;
+  }
+  /* het css category  */
+
+  /* danhmucan */
+
+  .categorycontent ul li ul li:first-child{
+    margin-top: 3px;
+  }
+
+  .categorycontent ul li ul li.liheader{
+    margin-top: 16px;
+  }
+
+  ul li a.header{
+    font-size: 15px;
+    padding-left: 33px;
+    color: #CF111A;
+  }
+
+  .categorycontent ul li ul .content{
+    float:left;
+    margin-left: 19px;
+    width: 300px;
+  }
+
+
+  .categorycontent ul li ul .content.phai{
+    margin-left: 100px;
+  }
+
+
+  .categorycontent ul li ul .content li a:hover{
+    color: #F5A623;
+  }
+  /* danhmucan */
+
+ @media (max-width:767px){
+  .navbar form .input-group{
+    width: 100%!important;
+  }
+
+  .navbar ul li a.nav-link{
+    margin-left:0.25rem!important;
+  }
+
+  .navbar ul li.account{
+    border-top: 1px dashed #CF111A;
+    border-bottom: 1px dashed #CF111A;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .navbar ul li.giohang{
+    border-bottom: 1px dashed #CF111A;
+    padding-bottom: 0.5rem;
+    margin-right:8px;
+  } 
+}

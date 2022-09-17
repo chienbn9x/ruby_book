@@ -13,7 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
 
-  <body>
+  <body id="<%= controller_name %>">
     <% if current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
       <div style="min-height: 560px; background-color: #f0f0f0;">
         <%= yield %>

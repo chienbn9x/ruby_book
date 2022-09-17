@@ -1,24 +1,26 @@
 
 <ul class="dropdown-menu collapse collapse-body" aria-labelledby="dropdownMenuButton1" style="margin-top: 0px; border-radius: 0;">
   <% Category.where(role: true).each do |category| %>
-  <li> <a href=""><%= category.name %></a><i class="bi bi-chevron-right float-end"></i>
-    <ul>
-      <li class="liheader"><a href="" class="header text-uppercase"><%= category.name %></a></li>
-      <% subors = category.subordinates %>
-      <% tmp = subors.count %>
-      <% lim = (tmp.to_f/2 > tmp/2) ? (tmp/2 + 1) : tmp/2  %>
-      <div class="content trai">
-        <% subors.limit(lim).each do |subor| %>
-        <li><%= link_to subor.name, category_path(subor) %></li>
-        <% end %>
-      </div>
-      <div class="content phai">
-        <% subors.limit(tmp - lim).offset(lim).each do |subor| %>
-        <li><%= link_to subor.name, category_path(subor) %></li>
-        <% end %>
-      </div>
-    </ul>
-  </li>
+    <% if category.subordinates.count > 0 %>
+      <li> <a href=""><%= category.name %></a><i class="bi bi-chevron-right float-end"></i>
+        <ul>
+          <li class="liheader"><a href="" class="header text-uppercase"><%= category.name %></a></li>
+          <% subors = category.subordinates %>
+          <% tmp = subors.count %>
+          <% lim = (tmp.to_f/2 > tmp/2) ? (tmp/2 + 1) : tmp/2  %>
+          <div class="content trai">
+            <% subors.limit(lim).each do |subor| %>
+            <li><%= link_to subor.name, category_path(subor) %></li>
+            <% end %>
+          </div>
+          <div class="content phai">
+            <% subors.limit(tmp - lim).offset(lim).each do |subor| %>
+            <li><%= link_to subor.name, category_path(subor) %></li>
+            <% end %>
+          </div>
+        </ul>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 <script type="text/javascript">

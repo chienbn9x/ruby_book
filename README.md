@@ -23,6 +23,23 @@ Things you may want to cover:
 
 * ...
 
+# SETUP ENVIRONMENT
+* Environment:
+- Install Ruby 2.7.6
+- Install Rails 6.1.6
+- Install Mysql ver8.0
+
+* Run command line:
+- rails db:create
+- rails db:migrate
+- yarn install --check-files
+- rails action_text:install
+
+* crawl data
+- bundle exec rake crawl:book
+- bundle exec rake import_db:category
+- bundle exec rake import_db:book
+
 
 # PLAN
 13/07/2022 23:06 => Chuẩn bị làm mục address cho user

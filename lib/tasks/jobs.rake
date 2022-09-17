@@ -52,18 +52,34 @@ namespace :import_db do
     end
   end
 
+  desc "Add categories"
+  task category: :environment do
+    name_file = "./dump/category/categories.txt"
+    file = File.open(name_file)
+    file.readlines.each do |line|
+      name, role, parent = line.strip.split('-+chien+-')
+      next if Category.where(name: name).count > 0
+      parent_id = Category.find_by(name: parent).id if parent.present?
+      role = role.present? ? true : false
+      Category.create(name: name, role: role, category_id: parent_id)
+    end
+
+    puts "Dump category successfully !!!"
+  end
+
   desc "Add book of category to table products"
   task book: :environment do
-    Category.where(role: false).decorate.each do |category|
-      sub_name = category.to_name_file
-      name_file = "./dump/book/" + sub_name + ".txt"
+    Dir["./dump/book/*.txt"].each do |name_file|
+      puts "Start import #{name_file}"
       file = File.open(name_file)
+      sub_name = File.basename(name_file, File.extname(name_file))
       count = 0
       file.readlines.map do |line|
         begin
           img0, img1, title, discount, price, publication_year, authors, height, 
-          width, translator, publication_company, layout, number_page, weight = line.strip.split('-+chien+-')
+          width, translator, publication_company, layout, number_page, weight, category = line.strip.split('-+chien+-')
           next if Product.where(title: title).count > 0
+          category = Category.find_by(name: category)
           product = category.products.new
           # img
           downloaded_image0 = URI.open(img0)
@@ -103,9 +119,19 @@ namespace :import_db do
           next
         end
       end
-      puts "import #{sub_name} in #{category.category.name} success #{count} record!"
+      puts "import #{name_file} success #{count} record!"
       file.close
     end
+  end
+
+  desc "test"
+  task test: :environment do
+    count = 0
+    Dir["./dump/book/*.txt"].each do |file|
+      p file
+      count += 1
+    end
+    p count
   end
 
 end
@@ -113,6 +139,6 @@ end
 namespace :crawl do
   desc "Test shell script"
   task book: :environment do
-    agent = Crawl.new.crawl_book
+    agent = Crawl.new.crawl_categories
   end
 end

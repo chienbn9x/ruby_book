@@ -9,8 +9,8 @@
     </div>
     <div class="the-loai-sach">
       <ul class="row list-unstyled d-flex">
-        <% number = 10 - @category.products.count %>
-        <% @category.products.each do |product| %>
+        <% number = 8 - @products.count %>
+        <% @products.each do |product| %>
         <li class="col">
           <a href="#" class="danh-muc text-decoration-none">
             <div class="img-categories text-center">
@@ -39,8 +39,8 @@
         <div class="tag">
           <label>Tác giả nổi bật:</label>
           <a href="#">Tất cả</a>
-          <% @category.products.each do |product| %>
-            <%= link_to product.authors, '#' %>
+          <% @authors.each do |author| %>
+            <%= link_to author, '#' %>
           <% end %>
         </div>
         <div class="sort d-flex ms-auto">
