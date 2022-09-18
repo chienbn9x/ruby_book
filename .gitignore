@@ -41,3 +41,5 @@ yarn-debug.log*
 ## database
 /db/schema.rb
 
+# ignore dump db
+/dump
