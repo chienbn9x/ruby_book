@@ -183,34 +183,6 @@
               </div>
             </div>
           </div>
-          <script type="text/javascript">
-            // rotate chevron
-            $('#step1contentid').on('show.bs.collapse', function() {
-              $(this).prev().addClass('active');
-            });
-            $('#step1contentid').on('hide.bs.collapse', function() {
-              $(this).prev().removeClass('active');
-            });
-            $('#step2contentid').on('show.bs.collapse', function() {
-              $(this).prev().addClass('active');
-            });
-            $('#step2contentid').on('hide.bs.collapse', function() {
-              $(this).prev().removeClass('active');
-            });
-            $('#step3contentid').on('show.bs.collapse', function() {
-              $(this).prev().addClass('active');
-            });
-            $('#step3contentid').on('hide.bs.collapse', function() {
-              $(this).prev().removeClass('active');
-            });
-
-            // nut btn-shopping-without-signup
-            $('#step1contentid').collapse('show');
-            $('.btn-shoping-without-signup').on('click', function(e) {
-              $('#step1contentid').collapse('hide');
-              $('#step2contentid').collapse('show');
-            }); 
-          </script>
         </div>
         <% end %>
         <!-- het div cart-steps  -->

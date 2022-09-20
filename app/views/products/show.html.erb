@@ -33,15 +33,6 @@
             <% end %>
           </div>
         </div>
-        <script type="text/javascript">
-          // thumb-img
-          $(".thumb-img.thumb1").addClass('vienvang');
-          $('.thumb-img').on('click', function() {
-            $('.product-image').attr('src', this.src);
-            $('.thumb-img:not(:hover)').removeClass('vienvang');
-            $(this).addClass('vienvang');
-          });
-        </script>
         <!-- thông tin sản phẩm: tên, giá bìa giá bán tiết kiệm, các khuyến mãi, nút chọn mua.... -->
         <div class="col-md-7 khoithongtin">
           <div class="row">
@@ -87,24 +78,6 @@
                       <span class="input-group-text btn-spin btn-inc">+</span>
                     </div>
                   </div>
-                  <script type="text/javascript">
-                    // btn spin 
-                    $('.btn-inc').on('click', function() {
-                      var strval = $(this).parent().prev().val();
-                      var val = parseInt(strval) + 1;
-                      $(this).parent().prev().attr('value', val);
-                    });
-
-                    $('.btn-dec').on('click', function() {
-                      var strval = $(this).parent().next().val();
-                      var val = parseInt(strval) - 1;
-                      if (val < 1) {
-                        $(this).parent().next().attr('value', 1);
-                      } else {
-                        $(this).parent().next().attr('value', val);
-                      }
-                    });
-                  </script>
                 </div>
                 <%= f.hidden_field :product_id, :value => @product.id %>
                 <%= f.submit 'Chọn mua', class: 'nutmua btn w-100 text-uppercase' %>
@@ -223,52 +196,6 @@
                     </div>
                     <div class="btn nutguibl">Gửi bình luận</div>
                   </div>
-                  <script type="text/javascript">
-                    // gui danh gia 
-                    $('.formdanhgia').hide(200);
-                    $('.vietdanhgia').on('click', function() {
-                      $('.formdanhgia').toggle(200);
-                    });
-
-                    var check_click = false;
-                    var current_click = 0;
-                    $('.star-x').on('click', function(e) {
-                      check_click = true;
-                      current_click = parseInt(e.target.id.slice(-1));
-                    });
-
-                    // neu chua click 
-                    $('.star-x').hover(
-                      function(e) {
-                        var id_buffer = 0;
-                        id = parseInt(e.target.id.slice(-1));
-                        if(!check_click) {
-                          for (let i = 1; i <= id; i++) {
-                            var selector = "#star" + i.toString();
-                            $(selector).css("color", "#f7a623");
-                          }
-                        } else {
-                          for (let i = 1; i <= id; i++) {
-                            var selector = "#star" + i.toString();
-                            $(selector).css("color", "#f7a623");
-                          }
-                        }
-                      },
-                      function(e) {
-                        if (!check_click) {
-                          for (let i = 1; i <= 5; i++) {
-                            var selector = "#star" + i.toString();
-                            $(selector).css("color", "#d1cccc");
-                          }
-                        } else {
-                          for (let i = current_click+1; i <= 5; i++) {
-                            var selector = "#star" + i.toString();
-                            $(selector).css("color", "#d1cccc");
-                          }
-                        }
-                      }
-                    );
-                  </script>
                 </div>
               </div>
             </div>

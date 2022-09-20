@@ -142,3 +142,14 @@ namespace :crawl do
     agent = Crawl.new.crawl_categories
   end
 end
+
+namespace :jobs do
+  desc "Update table orderstatuses"
+  task order_status: :environment do
+    Orderstatus.delete_all
+    Orderstatus.create(id: 1, status: "In Progress")
+    Orderstatus.create(id: 2, status: "Placed")
+    Orderstatus.create(id: 3, status: "Shipped")
+    Orderstatus.create(id: 4, status: "Cancelled")
+  end
+end

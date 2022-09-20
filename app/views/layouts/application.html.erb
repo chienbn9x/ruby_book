@@ -8,9 +8,6 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
 
   <body id="<%= controller_name %>">
@@ -24,6 +21,11 @@
         <%= yield %>
       </div>
       <%= render "layouts/footer" %>
+    <% end %>
+    
+    <% path = "./app/javascript/packs/#{controller_name}" %>
+    <% if Dir["#{path}/*.js"].include?("#{path}/#{action_name}.js") %>
+      <%= javascript_pack_tag "#{controller_name}/#{action_name}" %>
     <% end %>
   </body>
 </html>

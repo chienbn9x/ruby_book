@@ -35,32 +35,27 @@
   <div class="container">
     <div class="noidung bg-white" style=" width: 100%;">
       <!-- header của khối sản phẩm : tag(tác giả), bộ lọc và sắp xếp  -->
-      <div class="header-khoi-sp d-flex">
-        <div class="tag">
-          <label>Tác giả nổi bật:</label>
-          <a href="#">Tất cả</a>
-          <% @authors.each do |author| %>
-            <%= link_to author, '#' %>
-          <% end %>
-        </div>
-        <div class="sort d-flex ms-auto">
-          <div class="hien-thi">
-            <label for="hienthi-select" class="label-select">Hiển thị</label>
-            <select class="hienthi-select">
-              <option value="30">30</option>
-              <option value="60">60</option>
-            </select>
+      <%= form_with url: category_path do |f| %>
+        <div class="header-khoi-sp d-flex">
+          <div class="tag">
+            <label>Tác giả nổi bật:</label>
+            <a href="#">Tất cả</a>
+            <% @authors.each do |author| %>
+              <%= link_to author, '#' %>
+            <% end %>
           </div>
-          <div class="sap-xep">
-            <label for="sapxep-select" class="label-select">Sắp xếp</label>
-            <select class="sapxep-select">
-              <option value="moinhat">Mới nhất</option>
-              <option value="thap-cao">Giá: Thấp - Cao</option>
-              <option value="cao-thap">Giá: Cao - Thấp</option>
-            </select>
+          <div class="sort d-flex ms-auto">
+            <div class="hien-thi">
+              <%= f.label :display_select, 'Hiển thị', class: 'label-select' %>
+              <%= f.select :display_select, [4, 6], {}, { class: 'hienthi-select' } %>
+            </div>
+            <div class="sap-xep">
+              <%= f.label :sort_select, 'Sắp xếp', class: 'label-select' %>
+              <%= f.select :sort_select, [['Mới nhất', 1], ['Giá: Thấp - Cao', 2], ['Giá: Cao - Thấp', 3]], {}, { class: 'sapxep-select' } %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
 
       <!-- các sản phẩm  -->
       <div class="items">
