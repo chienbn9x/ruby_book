@@ -45,3 +45,10 @@ vi:
       logout: "Đăng xuất"
       member_ruby: "Thành viên RubyBook"
       signup: "Đăng ký"
+  views:
+    pagination:
+      first: "<<"
+      last: ">>"
+      previous: "<"
+      next: ">"
+      truncate: "…"

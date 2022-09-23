@@ -37,3 +37,9 @@ en:
       tax: "(Price includes VAT)"
       total: "Total:"
       transport_fee: "Shipping fee:"
+  pagination:
+    first: "« FIRST"
+    last: "LAST »"
+    previous: "‹ PREV"
+    next: "NEXT ›"
+    truncate: "…"

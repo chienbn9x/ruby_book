@@ -23,9 +23,9 @@
       <%= render "layouts/footer" %>
     <% end %>
     
-    <% path = "./app/javascript/packs/#{controller_name}" %>
+    <% path = "./app/assets/javascripts/#{controller_name}" %>
     <% if Dir["#{path}/*.js"].include?("#{path}/#{action_name}.js") %>
-      <%= javascript_pack_tag "#{controller_name}/#{action_name}" %>
+      <%= javascript_include_tag "#{controller_name}/#{action_name}" %>
     <% end %>
   </body>
 </html>

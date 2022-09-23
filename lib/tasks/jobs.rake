@@ -146,10 +146,22 @@ end
 namespace :jobs do
   desc "Update table orderstatuses"
   task order_status: :environment do
+    puts "Update table orderstatuses::START"
     Orderstatus.delete_all
     Orderstatus.create(id: 1, status: "In Progress")
     Orderstatus.create(id: 2, status: "Placed")
     Orderstatus.create(id: 3, status: "Shipped")
     Orderstatus.create(id: 4, status: "Cancelled")
+    puts "Update table orderstatuses::DONE"
+  end
+
+  desc "Update Price has dropped to table products"
+  task update_price_has_dropped: :environment do
+    puts "Update Price has dropped to table products::START"
+    Product.all.each do |product|
+      price = (product.price * (100 - product.discount))/100
+      product.update(price_has_dropped: price)
+    end
+    puts "Update Price has dropped to table products::DONE"
   end
 end

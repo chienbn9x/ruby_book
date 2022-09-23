@@ -13,6 +13,8 @@ gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
+# sprockets
+gem 'sprockets-rails', '2.3.3'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -77,3 +79,7 @@ gem 'mechanize'
 
 # nokogiri
 gem 'nokogiri', '~> 1.13', '>= 1.13.8'
+
+# paging
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
